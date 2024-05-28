@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #ComputationalArt
+	#name : #ComputationalArt,
+	#'squeak_changestamp' : true
 }
