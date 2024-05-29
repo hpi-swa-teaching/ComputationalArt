@@ -11,6 +11,16 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 5/29/2024 13:46'
+}
+Grid >> getCellAt: x and: y [
+	"comment stating purpose of message"
+
+	^grid at: x at: y
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/29/2024 13:40'
 }
 Grid >> initialize [
