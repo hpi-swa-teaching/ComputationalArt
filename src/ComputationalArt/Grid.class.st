@@ -21,26 +21,26 @@ Grid >> getCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/29/2024 15:13'
+	#'squeak_changestamp' : 'HaMa 5/29/2024 17:34'
 }
 Grid >> getNeighborsOfCellAt: x and: y [
 	"comment stating purpose of message"
 	|neighborMatrix temp|
 	neighborMatrix := Matrix rows: 3 columns: 3.
 	temp := -1.
-	((x>0) and: (y>0))
+	((x>1) and: (y>1))
 		ifTrue: [temp := grid at: (x-1) at: (y-1)].
 	neighborMatrix at: 1 at: 1 put: temp.
 	temp := -1.
-	(x>0)
+	(x>1)
 		ifTrue: [temp := grid at: (x-1) at: y].
 	neighborMatrix at: 1 at: 2 put: temp.
 	temp := -1.
-	((x>0) and: (y<(sizey+1)))
+	((x>1) and: (y<(sizey+1)))
 		ifTrue: [temp := grid at: (x-1) at: (y +1)].
 	neighborMatrix at: 1 at: 3 put: temp.
 	temp := -1.
-	(y>0)
+	(y>1)
 		ifTrue: [temp := grid at: x at: (y-1)].
 	neighborMatrix at: 2 at: 1 put: temp.
 	temp := grid at: x at: y.
@@ -50,7 +50,7 @@ Grid >> getNeighborsOfCellAt: x and: y [
 		ifTrue: [temp := grid at: x at: (y +1)].
 	neighborMatrix at: 2 at: 3 put: temp.
 	temp := -1.
-	((x<(sizex+1)) and: (y>0))
+	((x<(sizex+1)) and: (y>1))
 		ifTrue: [temp := grid at: (x+1) at: (y -1)].
 	neighborMatrix at: 3 at: 1 put: temp.
 	temp := -1.
