@@ -81,3 +81,12 @@ Grid >> initialize [
 		y := y +1.
 	].
 ]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 5/29/2024 14:14'
+}
+Grid >> putCell: cell at: x and: y [
+	"comment stating purpose of message"
+	grid at: x at: y put: cell.
+]
