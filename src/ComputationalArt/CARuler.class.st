@@ -9,13 +9,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 15:56'
+	#'squeak_changestamp' : 'Sars 5/29/2024 16:53'
 }
 CARuler >> applyRuleWith: aMatrixOfNeighbors [
 
     | middleCellValue |
 
-    middleCellValue := (aMatrixOfNeighbors at: 2) at: 2.
+    middleCellValue := aMatrixOfNeighbors at: 2 at: 2.
     ^middleCellValue + 1.
 ]
 
@@ -52,14 +52,14 @@ CARuler >> applyRules: aRuleSet to: aMatrix [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 15:40'
+	#'squeak_changestamp' : 'Sars 5/29/2024 16:54'
 }
 CARuler >> printMatrix: aMatrix rows: numRows cols: numCols [
     "print the Grid given row and col count, because we also need them elsewhere"
     
     1 to: numRows do: [ :rowIndex |
         1 to: numCols do: [ :colIndex |
-            Transcript show: ( (aMatrix at: rowIndex ) at: colIndex) printString; space.
+            Transcript show: ( aMatrix at: rowIndex  at: colIndex) printString; space.
         ].
         Transcript cr.
     ].
