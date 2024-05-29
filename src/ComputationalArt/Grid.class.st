@@ -67,7 +67,7 @@ Grid >> getNeighborsOfCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/29/2024 14:10'
+	#'squeak_changestamp' : 'HaMa 5/29/2024 14:12'
 }
 Grid >> initialize [
 	"comment stating purpose of message"
@@ -76,6 +76,8 @@ Grid >> initialize [
 	x := 1.
 	y := 1.
 	[x<sizex+1 and: y<sizey+1] whileTrue: [
-		grid at: x at: y put: -1
+		grid at: x at: y put: -1.
+		x := x +1.
+		y := y +1.
 	].
 ]
