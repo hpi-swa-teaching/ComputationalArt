@@ -21,44 +21,44 @@ Grid >> getCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/29/2024 14:07'
+	#'squeak_changestamp' : 'HaMa 5/29/2024 14:11'
 }
 Grid >> getNeighborsOfCellAt: x and: y [
 	"comment stating purpose of message"
 	|neighborMatrix temp|
 	neighborMatrix := Matrix rows: 3 columns: 3.
 	(x>0 and: y>0)
-		ifTrue: [temp := grid getCellAt: x-1 and: y-1]
+		ifTrue: [temp := grid at: x-1 at: y-1]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 1 at: 1 put: temp.
 	(x>0)
-		ifTrue: [temp := grid getCellAt: x-1 and: y]
+		ifTrue: [temp := grid at: x-1 at: y]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 1 at: 2 put: temp.
 	(x>0 and: y<(sizey+1))
-		ifTrue: [temp := grid getCellAt: x-1 and: y +1]
+		ifTrue: [temp := grid at: x-1 at: y +1]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 1 at: 3 put: temp.
 	(y>0)
-		ifTrue: [temp := grid getCellAt: x and: y-1]
+		ifTrue: [temp := grid at: x at: y-1]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 2 at: 1 put: temp.
 	temp := grid getCellAt: x and: y.
 	neighborMatrix at: 2 at: 2 put: temp.
 	(y<(sizey+1))
-		ifTrue: [temp := grid getCellAt: x and: y +1]
+		ifTrue: [temp := grid at: x at: y +1]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 2 at: 3 put: temp.
 	(x<(sizex+1) and y>0)
-		ifTrue: [temp := grid getCellAt: x+1 and: y -1]
+		ifTrue: [temp := grid at: x+1 at: y -1]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 3 at: 1 put: temp.
 	(x<(sizex+1))
-		ifTrue: [temp := grid getCellAt: x+1 and: y]
+		ifTrue: [temp := grid at: x+1 at: y]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 3 at: 2 put: temp.
 	(x<(sizex+1) and: y<(sizey+1))
-		ifTrue: [temp := grid getCellAt: x+1 and: y+1]
+		ifTrue: [temp := grid at: x+1 at: y+1]
 		ifFalse: [temp := -1].
 	neighborMatrix at: 3 at: 3 put: temp.
 	^neighborMatrix
@@ -67,9 +67,15 @@ Grid >> getNeighborsOfCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/29/2024 13:40'
+	#'squeak_changestamp' : 'HaMa 5/29/2024 14:10'
 }
 Grid >> initialize [
 	"comment stating purpose of message"
-	grid := Matrix rows: sizex columns: sizey
+	|x y|
+	grid := Matrix rows: sizex columns: sizey.
+	x := 1.
+	y := 1.
+	[x<sizex+1 and: y<sizey+1] whileTrue: [
+		grid at: x at: y put: -1
+	].
 ]
