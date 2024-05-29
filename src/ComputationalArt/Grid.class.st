@@ -85,7 +85,7 @@ Grid >> getSizey [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/29/2024 15:24'
+	#'squeak_changestamp' : 'Sars 5/29/2024 17:26'
 }
 Grid >> initialize [
 	"comment stating purpose of message"
@@ -97,7 +97,7 @@ Grid >> initialize [
 	y := 1.
 	[x<(sizex+1)] whileTrue: [
 		[y<(sizey+1)] whileTrue: [
-			grid at: x at: y put: -1.
+			grid at: x at: y put: 0.
 			y := y +1.
 		].
 		y := 1.
