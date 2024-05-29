@@ -21,6 +21,52 @@ Grid >> getCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 5/29/2024 14:07'
+}
+Grid >> getNeighborsOfCellAt: x and: y [
+	"comment stating purpose of message"
+	|neighborMatrix temp|
+	neighborMatrix := Matrix rows: 3 columns: 3.
+	(x>0 and: y>0)
+		ifTrue: [temp := grid getCellAt: x-1 and: y-1]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 1 at: 1 put: temp.
+	(x>0)
+		ifTrue: [temp := grid getCellAt: x-1 and: y]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 1 at: 2 put: temp.
+	(x>0 and: y<(sizey+1))
+		ifTrue: [temp := grid getCellAt: x-1 and: y +1]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 1 at: 3 put: temp.
+	(y>0)
+		ifTrue: [temp := grid getCellAt: x and: y-1]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 2 at: 1 put: temp.
+	temp := grid getCellAt: x and: y.
+	neighborMatrix at: 2 at: 2 put: temp.
+	(y<(sizey+1))
+		ifTrue: [temp := grid getCellAt: x and: y +1]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 2 at: 3 put: temp.
+	(x<(sizex+1) and y>0)
+		ifTrue: [temp := grid getCellAt: x+1 and: y -1]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 3 at: 1 put: temp.
+	(x<(sizex+1))
+		ifTrue: [temp := grid getCellAt: x+1 and: y]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 3 at: 2 put: temp.
+	(x<(sizex+1) and: y<(sizey+1))
+		ifTrue: [temp := grid getCellAt: x+1 and: y+1]
+		ifFalse: [temp := -1].
+	neighborMatrix at: 3 at: 3 put: temp.
+	^neighborMatrix
+		
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/29/2024 13:40'
 }
 Grid >> initialize [
