@@ -67,6 +67,24 @@ Grid >> getNeighborsOfCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 5/29/2024 15:26'
+}
+Grid >> getSizex [
+	"comment stating purpose of message"
+	^sizex
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 5/29/2024 15:26'
+}
+Grid >> getSizey [
+	"comment stating purpose of message"
+	^sizey
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/29/2024 15:24'
 }
 Grid >> initialize [
