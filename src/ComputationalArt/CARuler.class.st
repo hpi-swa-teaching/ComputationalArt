@@ -21,14 +21,14 @@ CARuler >> applyRuleWith: aMatrixOfNeighbors [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 16:14'
+	#'squeak_changestamp' : 'Sars 5/29/2024 23:49'
 }
 CARuler >> applyRules: aRuleSet to: aMatrix [
     
     | newMatrix currMatrix numRows numCols updatedValue cellNeighbors|
     
-    numRows := aMatrix getSizex.
-    numCols := aMatrix getSizey.
+    numRows := aMatrix getCols.
+    numCols := aMatrix getRows.
 
     currMatrix := aMatrix.
     newMatrix := aMatrix.
@@ -38,9 +38,9 @@ CARuler >> applyRules: aRuleSet to: aMatrix [
 	 
         1 to: numRows do: [ :rowIndex |
             1 to: numCols do: [ :colIndex |
-	            cellNeighbors := currMatrix getNeighborsOfCellAt: rowIndex and: colIndex.
+	            cellNeighbors := currMatrix getNeighborsOfCellAtRow: colIndex andCol: rowIndex.
                   updatedValue := rule applyRuleWith: cellNeighbors.
-                  newMatrix putCell: updatedValue at: rowIndex and:colIndex.
+                  newMatrix putCell: updatedValue atRow: rowIndex andCol:colIndex.
             ].
         ].  
     ].
