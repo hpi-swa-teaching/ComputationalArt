@@ -67,7 +67,7 @@ Grid >> getNeighborsOfCellAt: x and: y [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/29/2024 15:15'
+	#'squeak_changestamp' : 'HaMa 5/29/2024 15:24'
 }
 Grid >> initialize [
 	"comment stating purpose of message"
@@ -82,6 +82,7 @@ Grid >> initialize [
 			grid at: x at: y put: -1.
 			y := y +1.
 		].
+		y := 1.
 		x := x +1.
 	].
 ]
