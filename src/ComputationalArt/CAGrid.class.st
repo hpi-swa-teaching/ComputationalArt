@@ -29,7 +29,16 @@ CAGrid >> getCols [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 00:39'
+	#'squeak_changestamp' : 'Sars 5/30/2024 11:42'
+}
+CAGrid >> getGrid [
+
+	^grid
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 5/30/2024 13:43'
 }
 CAGrid >> getNeighborsOfCellAtRow: row andCol: col [
 	"get the 3x3 of cells surrounding a certain input"
@@ -43,27 +52,31 @@ CAGrid >> getNeighborsOfCellAtRow: row andCol: col [
     	].
 
 	(col=1) ifTrue: [
-		neighborMatrix at: 1 at: 1 put: -1.
-		neighborMatrix at: 2 at: 1 put: -1.
-		neighborMatrix at: 3 at: 1 put: -1.
+		neighborMatrix 
+			at: 1 at: 1 put: -1;
+			at: 2 at: 1 put: -1;
+			at: 3 at: 1 put: -1.
 	].
 
 	(row=1) ifTrue: [
-		neighborMatrix at: 1 at: 1 put: -1.
-		neighborMatrix at: 1 at: 2 put: -1.
-		neighborMatrix at: 1 at: 3 put: -1.
+		neighborMatrix 
+			at: 1 at: 1 put: -1;
+			at: 1 at: 2 put: -1;
+			at: 1 at: 3 put: -1.
 	].
 
 	(row=numRows) ifTrue: [
-		neighborMatrix at: 1 at: 3 put: -1.
-		neighborMatrix at: 2 at: 3 put: -1.
-		neighborMatrix at: 3 at: 3 put: -1.
+		neighborMatrix 
+			at: 3 at: 1 put: -1;
+			at: 3 at: 2 put: -1;
+		 	at: 3 at: 3 put: -1.
 	].
 
 	(col=numCols) ifTrue: [
-		neighborMatrix at: 3 at: 1 put: -1.
-		neighborMatrix at: 3 at: 2 put: -1.
-		neighborMatrix at: 3 at: 3 put: -1.
+		neighborMatrix 
+			at: 1 at: 3 put: -1;
+			at: 2 at: 3 put: -1;
+			at: 3 at: 3 put: -1.
 	].
 	
 	1 to: 3 do: [:rowOffset |
@@ -93,31 +106,28 @@ CAGrid >> getRows [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 23:45'
+	#'squeak_changestamp' : 'Sars 5/30/2024 14:06'
 }
 CAGrid >> initialize [
-	"comment stating purpose of message"
-	|x y|
-	numCols := 10.
+
+	numCols := 6.
 	numRows := 10.
+	
 	grid := Matrix rows: numRows columns: numCols.
-	x := 1.
-	y := 1.
-	[y<(numRows+1)] whileTrue: [
-		[x<(numCols+1)] whileTrue: [
-			grid at: y at: x put: x+(y*numRows).
-			x := x +1.
-		].
-		x := 1.
-		y := y +1.
-	].
+	
+      1 to: numRows do: [:rowIndex |
+       	1 to: numCols do: [: colIndex|
+            	"grid at: rowIndex at: colIndex put: 10 * rowIndex + colIndex."
+			grid at: rowIndex at: colIndex put: 10.
+        	].
+    	].
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 23:31'
+	#'squeak_changestamp' : 'Sars 5/30/2024 12:04'
 }
-CAGrid >> putCell: cell atRow: y andCol: x [
-	"comment stating purpose of message"
-	grid at: y at: x put: cell.
+CAGrid >> putCell: cell atRow: row andCol: col [
+
+	grid at: row at: col put: cell.
 ]
