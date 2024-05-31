@@ -11,6 +11,23 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 5/31/2024 13:38'
+}
+CAGrid >> deepcopy [
+	|clone|
+	clone := CAGrid new.
+	
+      1 to: numRows do: [:rowIndex |
+       	1 to: numCols do: [: colIndex|
+            	"grid at: rowIndex at: colIndex put: 10 * rowIndex + colIndex."
+			clone putCell: (grid at: rowIndex at: colIndex) atRow: rowIndex andCol: colIndex.
+        	].
+    	].
+	^ clone
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 5/29/2024 23:51'
 }
 CAGrid >> getCellAtRow: row andCol: col [
@@ -106,7 +123,7 @@ CAGrid >> getRows [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 14:06'
+	#'squeak_changestamp' : 'HaMa 5/31/2024 12:20'
 }
 CAGrid >> initialize [
 
@@ -118,7 +135,7 @@ CAGrid >> initialize [
       1 to: numRows do: [:rowIndex |
        	1 to: numCols do: [: colIndex|
             	"grid at: rowIndex at: colIndex put: 10 * rowIndex + colIndex."
-			grid at: rowIndex at: colIndex put: 10.
+			grid at: rowIndex at: colIndex put: 0.
         	].
     	].
 ]
