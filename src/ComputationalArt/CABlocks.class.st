@@ -43,15 +43,29 @@ CABlocks >> blockNum [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 13:47'
+	#'squeak_changestamp' : 'Sars 6/3/2024 23:46'
+}
+CABlocks >> colorOf: index [
+
+	^ blockColors at: index.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/3/2024 23:46'
 }
 CABlocks >> initialize [
-	"comment stating purpose of message"
+
 	blockNames := IdentityDictionary new.
 	blockNames at: 1 put: 'water'.
 	blockNames at: 2 put: 'sand'.
 	blockNames at: 3 put: 'stone'.
-	blockColors := #('blue' 'yellow' 'grey').
+	
+	blockColors := IdentityDictionary new.
+	blockColors at: 1 put: Color blue.
+	blockColors at: 2 put: Color yellow.
+	blockColors at: 3 put: Color gray.
+	
 ]
 
 {

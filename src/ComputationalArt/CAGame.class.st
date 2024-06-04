@@ -20,6 +20,15 @@ CAGame class >> start [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/3/2024 23:47'
+}
+CAGame >> getDisplay [
+
+	^display
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Pepe Simon 5/28/2024 15:02'
 }
 CAGame >> initialize [
