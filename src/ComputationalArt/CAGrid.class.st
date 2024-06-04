@@ -123,7 +123,7 @@ CAGrid >> getRows [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/3/2024 23:47'
+	#'squeak_changestamp' : 'Sars 6/4/2024 14:00'
 }
 CAGrid >> initialize [
 
@@ -133,9 +133,8 @@ CAGrid >> initialize [
 	grid := Matrix rows: numRows columns: numCols.
 	
       1 to: numRows do: [:rowIndex |
-       	1 to: numCols do: [: colIndex|
-            	"grid at: rowIndex at: colIndex put: 10 * rowIndex + colIndex."
-			grid at: rowIndex at: colIndex put: 0.
+       	1 to: numCols do: [: colIndex |
+			grid at: rowIndex at: colIndex put: 2.
         	].
     	].
 ]
