@@ -35,6 +35,14 @@ CABlocks class >> water [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/5/2024 15:32'
+}
+CABlocks >> air [ 
+	^0
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 12:34'
 }
 CABlocks >> blockNum [
@@ -52,20 +60,22 @@ CABlocks >> colorOf: index [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/3/2024 23:46'
+	#'squeak_changestamp' : 'Sars 6/5/2024 15:32'
 }
 CABlocks >> initialize [
-
-	blockNames := IdentityDictionary new.
-	blockNames at: 1 put: 'water'.
-	blockNames at: 2 put: 'sand'.
-	blockNames at: 3 put: 'stone'.
-	
+	blockNames := IdentityDictionary new. 
+	blockNames
+		at: 1 put: 'water'; 
+		at: 2 put: 'sand'; 
+		at: 3 put: 'stone'; 
+		at: 0 put: 'air'.
+		
 	blockColors := IdentityDictionary new.
-	blockColors at: 1 put: Color blue.
-	blockColors at: 2 put: Color yellow.
-	blockColors at: 3 put: Color gray.
-	
+	blockColors 
+		at: 1 put: Color blue; 
+		at: 2 put: Color yellow; 
+		at: 3 put: Color gray; 
+		at: 0 put: Color white
 ]
 
 {
