@@ -85,7 +85,7 @@ self wipeCells.
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/4/2024 14:28'
+	#'squeak_changestamp' : 'Sars 6/5/2024 15:20'
 }
 CADisplay >> step [
 	| grid cols rows origin size border gap blockLookup aGrid |
@@ -107,7 +107,7 @@ CADisplay >> step [
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := Morph new extent: size @ size;
 										 borderColor: Color black;
-										 color: Color random;
+										 color: ( blockLookup colorOf: cell);
 										 borderWidth: border;
 										 position: colIndex - 1 * (size + gap) @ (rowIndex - 1 * (size + gap)) + origin.
 							viewMorph addMorph: cellMorph.
@@ -117,9 +117,10 @@ CADisplay >> step [
 			(1 to: rows)
 				do: [:rowIndex | (1 to: cols)
 						do: [:colIndex | 
-							| cellMorph |
+							| cellMorph cell|
+							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
-							cellMorph color: Color random]]]
+							cellMorph color: ( blockLookup colorOf: cell)]]]
 ]
 
 {

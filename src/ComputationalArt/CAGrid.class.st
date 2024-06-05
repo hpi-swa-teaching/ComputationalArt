@@ -123,20 +123,28 @@ CAGrid >> getRows [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/4/2024 14:00'
+	#'squeak_changestamp' : 'Sars 6/5/2024 16:21'
 }
 CAGrid >> initialize [
 
-	numCols := 100.
-	numRows := 100.
-	
-	grid := Matrix rows: numRows columns: numCols.
-	
-      1 to: numRows do: [:rowIndex |
-       	1 to: numCols do: [: colIndex |
-			grid at: rowIndex at: colIndex put: 2.
-        	].
-    	].
+|rand|
+
+    numCols := 100.
+    numRows := 100.
+    rand := #(1 1 1 1  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3).
+
+    
+    grid := Matrix rows: numRows columns: numCols.
+    
+    1 to: numRows do: [:rowIndex |
+        1 to: numCols do: [:colIndex |
+            (rowIndex < 45) ifTrue: [
+                grid at: rowIndex at: colIndex put: rand atRandom.
+            ] ifFalse: [
+                grid at: rowIndex at: colIndex put: 0.
+            ].
+        ].
+    ].
 ]
 
 {
