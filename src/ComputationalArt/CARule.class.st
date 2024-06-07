@@ -6,9 +6,9 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 13:57'
+	#'squeak_changestamp' : 'Sars 6/7/2024 16:05'
 }
-CARule >> applyRuleWith: neighborMatrix [
+CARule >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 
 	self subclassResponsibility
 ]

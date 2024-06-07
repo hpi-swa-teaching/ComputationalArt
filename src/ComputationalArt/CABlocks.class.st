@@ -11,6 +11,22 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/7/2024 14:07'
+}
+CABlocks class >> air [
+	^0
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:15'
+}
+CABlocks class >> algae [
+	^ 4
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 12:03'
 }
 CABlocks class >> sand [
@@ -43,6 +59,14 @@ CABlocks >> air [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:08'
+}
+CABlocks >> algae [ 
+	^4
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 12:34'
 }
 CABlocks >> blockNum [
@@ -60,22 +84,26 @@ CABlocks >> colorOf: index [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/5/2024 15:32'
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:09'
 }
 CABlocks >> initialize [
 	blockNames := IdentityDictionary new. 
 	blockNames
+		at: 0 put: 'air';
 		at: 1 put: 'water'; 
 		at: 2 put: 'sand'; 
-		at: 3 put: 'stone'; 
-		at: 0 put: 'air'.
+		at: 3 put: 'stone';
+		at: 4 put: 'algae'.
+		
 		
 	blockColors := IdentityDictionary new.
 	blockColors 
+		at: 0 put: Color white;
 		at: 1 put: Color blue; 
 		at: 2 put: Color yellow; 
-		at: 3 put: Color gray; 
-		at: 0 put: Color white
+		at: 3 put: Color gray;
+		at: 4 put: Color green.
+		
 ]
 
 {

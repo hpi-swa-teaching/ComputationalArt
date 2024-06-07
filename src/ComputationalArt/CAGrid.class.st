@@ -11,6 +11,29 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:12'
+}
+CAGrid class >> fill: aGrid [
+
+|rand numCols numRows|
+
+    numCols := aGrid getCols.
+    numRows := aGrid getRows.
+    rand := #(1 1 1 1  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 4 4 4).
+   
+    1 to: numRows do: [:rowIndex |
+        1 to: numCols do: [:colIndex |
+            (rowIndex < 45) ifTrue: [
+                aGrid putCell: rand atRandom atRow: rowIndex andCol: colIndex.
+            ] ifFalse: [
+                aGrid putCell: 0 atRow: rowIndex andCol: colIndex.
+            ].
+        ].
+    ].
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 13:38'
 }
 CAGrid >> deepcopy [
@@ -123,26 +146,19 @@ CAGrid >> getRows [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/5/2024 16:21'
+	#'squeak_changestamp' : 'Sars 6/7/2024 15:51'
 }
 CAGrid >> initialize [
 
-|rand|
-
     numCols := 100.
     numRows := 100.
-    rand := #(1 1 1 1  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3).
-
     
     grid := Matrix rows: numRows columns: numCols.
     
     1 to: numRows do: [:rowIndex |
         1 to: numCols do: [:colIndex |
-            (rowIndex < 45) ifTrue: [
-                grid at: rowIndex at: colIndex put: rand atRandom.
-            ] ifFalse: [
-                grid at: rowIndex at: colIndex put: 0.
-            ].
+            grid at: rowIndex at: colIndex put: 0.
+           
         ].
     ].
 ]
