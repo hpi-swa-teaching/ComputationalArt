@@ -9,18 +9,16 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 13:41'
+	#'squeak_changestamp' : 'Sars 6/7/2024 16:03'
 }
 CARuler >> applyRules: aRuleSet to: aGrid [
     
-    | newGrid currGrid numRows numCols cellNeighbors newCellVal|
+    | newGrid currGrid numRows numCols cellNeighbors newCellNeighbors newCellVal|
 	
     numRows := aGrid getRows.
     numCols := aGrid getCols.
 
-    currGrid := CAGrid new.
-    currGrid := aGrid.
-    newGrid :=CAGrid new.
+    currGrid := aGrid deepcopy.
     newGrid := aGrid.
 
     aRuleSet do: [ :rule |
@@ -29,7 +27,8 @@ CARuler >> applyRules: aRuleSet to: aGrid [
         1 to: numRows do: [ :rowIndex |
             1 to: numCols do: [ :colIndex |
 	           cellNeighbors := currGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
-	           newCellVal := rule applyRuleWith: cellNeighbors.
+		     newCellNeighbors := newGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
+	           newCellVal := rule applyRuleWith: cellNeighbors and: newCellNeighbors.
                  newGrid putCell: newCellVal atRow: rowIndex andCol: colIndex.
             ].
         ].  

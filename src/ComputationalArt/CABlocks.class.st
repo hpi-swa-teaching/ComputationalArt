@@ -11,6 +11,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/7/2024 14:07'
+}
+CABlocks class >> air [
+	^0
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 12:03'
 }
 CABlocks class >> sand [
