@@ -1,16 +1,12 @@
 Class {
 	#name : #CARuleSinkEX,
 	#superclass : #CARule,
-	#instVars : [
-		'appliesTo',
-		'blocks'
-	],
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 17:00'
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:40'
 }
 CARuleSinkEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     |aboveMe me belowMe sinkingBlocks |
@@ -21,7 +17,6 @@ CARuleSinkEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 
     sinkingBlocks := OrderedCollection new
         add: CABlocks sand; 
-        add: CABlocks water;
         yourself.
 
     ((me = CABlocks water) and: [sinkingBlocks includes: aboveMe]) ifTrue: [

@@ -1,16 +1,12 @@
 Class {
 	#name : #CARulePyramidLeftEX,
 	#superclass : #CARule,
-	#instVars : [
-		'appliesTo',
-		'blocks'
-	],
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 17:38'
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:17'
 }
 CARulePyramidLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     |me rightMe belowMe leftMe belowLeftMe futureLeftMe aboveRightMe futureAboveRightMe pyramidBlocks lightBlocks chance|
@@ -30,6 +26,7 @@ CARulePyramidLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 
     pyramidBlocks := OrderedCollection new
         add: CABlocks sand;
+        add: CABlocks algae;
         yourself.
 
     lightBlocks := OrderedCollection new

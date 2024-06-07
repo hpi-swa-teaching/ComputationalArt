@@ -1,10 +1,6 @@
 Class {
 	#name : #CARuleFluidFlowLeftEX,
 	#superclass : #CARule,
-	#instVars : [
-		'appliesTo',
-		'blocks'
-	],
 	#category : #ComputationalArt
 }
 

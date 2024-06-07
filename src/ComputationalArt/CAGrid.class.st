@@ -11,7 +11,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 15:58'
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:12'
 }
 CAGrid class >> fill: aGrid [
 
@@ -19,7 +19,7 @@ CAGrid class >> fill: aGrid [
 
     numCols := aGrid getCols.
     numRows := aGrid getRows.
-    rand := #(1 1 1 1  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3).
+    rand := #(1 1 1 1  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 4 4 4).
    
     1 to: numRows do: [:rowIndex |
         1 to: numCols do: [:colIndex |

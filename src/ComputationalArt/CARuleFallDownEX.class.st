@@ -1,16 +1,12 @@
 Class {
 	#name : #CARuleFallDownEX,
 	#superclass : #CARule,
-	#instVars : [
-		'appliesTo',
-		'blocks'
-	],
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 16:59'
+	#'squeak_changestamp' : 'Sars 6/7/2024 18:14'
 }
 CARuleFallDownEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     |aboveMe me belowMe fallingBlocks |
@@ -22,6 +18,7 @@ CARuleFallDownEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     fallingBlocks := OrderedCollection new
         add: CABlocks sand; 
         add: CABlocks water;
+        add: CABlocks algae;
         yourself.
 
     ((me = CABlocks air) and: [fallingBlocks includes: aboveMe]) ifTrue: [
