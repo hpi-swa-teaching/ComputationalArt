@@ -10,6 +10,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JAL 6/12/2024 18:03'
+}
+CAOverlayItem >> contents [
+	 ^ stringmorph contents
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JAL 6/5/2024 16:06'
 }
 CAOverlayItem >> contents: aString [
