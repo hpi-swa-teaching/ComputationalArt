@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 19:12'
+	#'squeak_changestamp' : 'Sars 6/12/2024 13:32'
 }
 CARuleAlgaeDieEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     |me waterCount chance tempCell|
@@ -27,7 +27,7 @@ CARuleAlgaeDieEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
         ].
     ].
 
-    ((me = CABlocks algae) and: ((waterCount * chance) < 20)) ifTrue: [
+    ((me = CABlocks algae) and: ((waterCount * chance) < 10)) ifTrue: [
         ^CABlocks water.
     ].
 
