@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 16:17'
+	#'squeak_changestamp' : 'JAL 6/12/2024 15:21'
 }
 CAOverlayPlayMenu >> initialize [
 	super initialize.
