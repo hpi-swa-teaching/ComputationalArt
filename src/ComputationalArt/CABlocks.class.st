@@ -27,10 +27,34 @@ CABlocks class >> algae [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/12/2024 20:04'
+}
+CABlocks class >> fire [
+	^ 6
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/12/2024 20:04'
+}
+CABlocks class >> fish [
+	^ 9
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 12:03'
 }
 CABlocks class >> sand [
 	^ 2
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/12/2024 20:03'
+}
+CABlocks class >> smoke [
+	^ 7
 ]
 
 {
@@ -43,6 +67,14 @@ CABlocks class >> stone [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/12/2024 20:09'
+}
+CABlocks class >> tnt [
+^8
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 5/31/2024 12:04'
 }
 CABlocks class >> water [
@@ -51,18 +83,10 @@ CABlocks class >> water [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/5/2024 15:32'
+	#'squeak_changestamp' : 'Sars 6/12/2024 20:02'
 }
-CABlocks >> air [ 
-	^0
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 18:08'
-}
-CABlocks >> algae [ 
-	^4
+CABlocks class >> wood [
+	^5
 ]
 
 {
@@ -84,26 +108,31 @@ CABlocks >> colorOf: index [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 18:09'
+	#'squeak_changestamp' : 'Sars 6/12/2024 21:26'
 }
 CABlocks >> initialize [
-	blockNames := IdentityDictionary new. 
-	blockNames
-		at: 0 put: 'air';
-		at: 1 put: 'water'; 
-		at: 2 put: 'sand'; 
-		at: 3 put: 'stone';
-		at: 4 put: 'algae'.
-		
-		
-	blockColors := IdentityDictionary new.
-	blockColors 
-		at: 0 put: Color white;
-		at: 1 put: Color blue; 
-		at: 2 put: Color yellow; 
-		at: 3 put: Color gray;
-		at: 4 put: Color green.
-		
+	blockNames := IdentityDictionary new at: 0 put: 'air';
+				 at: 1 put: 'water';
+				 at: 2 put: 'sand';
+				 at: 3 put: 'stone';
+				 at: 4 put: 'algae';
+				 at: 5 put: 'wood';
+				 at: 6 put: 'fire';
+				 at: 7 put: 'smoke';
+				 at: 8 put: 'tnt';
+				 at: 9 put: 'fish';
+				 yourself.
+	blockColors := IdentityDictionary new at: 0 put: Color white;
+				 at: 1 put: Color blue;
+				 at: 2 put: Color yellow;
+				 at: 3 put: Color black;
+				 at: 4 put: Color green;
+				 at: 5 put: Color brown;
+				 at: 6 put: Color red;
+				 at: 7 put: Color lightGray;
+				 at: 8 put: Color orange;
+				 at: 9 put: Color veryPaleRed;
+				 yourself
 ]
 
 {
@@ -112,28 +141,4 @@ CABlocks >> initialize [
 }
 CABlocks >> nameOf: index [
 	^ blockNames at: index.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:04'
-}
-CABlocks >> sand [ 
-	^ 2
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:05'
-}
-CABlocks >> stone [ 
-	^ 3
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:04'
-}
-CABlocks >> water [
-	^ 1
 ]

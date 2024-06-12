@@ -39,7 +39,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 15:26'
+	#'squeak_changestamp' : 'Sars 6/12/2024 22:08'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
@@ -55,18 +55,24 @@ CAGame >> start [
 				 add: CARulePyramidRightEX new;
 				 add: CARuleAlgaeDieEX new;
 				 add: CARuleAlgaeGrowEX new;
+				 add: CARuleRiseEX new;
+				 add: CARuleGasFlowLeftEX new;
+				 add: CARuleGasFlowRightEX new;
+				 add: CARuleGasDisappearEX new;
+				 add: CARuleFireOutEX new;
+				add: CARuleBurnEX new;
 				 yourself.
 	ruler := CARuler new.
 	grid := CAGrid new.
 	CAGrid fill: grid.
 	screen attachGrid: grid.
-	maxIterations := 1000.
+	maxIterations := 200.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [(Delay forSeconds: frameDelay) wait.
 					isRunning
-					ifTrue: [grid := ruler applyRules: ruleSet to: grid.
-						screen step].
+						ifTrue: [grid := ruler applyRules: ruleSet to: grid.
+							screen step].
 					iterationCount := iterationCount + 1].
 			Transcript show: 'Game loop terminated after ' , maxIterations printString , ' iterations.';
 				 cr] fork
