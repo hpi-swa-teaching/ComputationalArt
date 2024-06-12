@@ -11,14 +11,6 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Pepe Simon 5/28/2024 15:19'
-}
-CADisplay class >> open [
-	^ CADisplay new.
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/4/2024 14:05'
 }
 CADisplay >> attachGrid: aGrid [
