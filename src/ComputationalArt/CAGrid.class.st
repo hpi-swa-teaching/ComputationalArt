@@ -11,25 +11,26 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 18:12'
+	#'squeak_changestamp' : 'HaMa 6/14/2024 11:39'
 }
-CAGrid class >> fill: aGrid [
-
-|rand numCols numRows|
-
-    numCols := aGrid getCols.
-    numRows := aGrid getRows.
-    rand := #(1 1 1 1  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 4 4 4).
-   
-    1 to: numRows do: [:rowIndex |
-        1 to: numCols do: [:colIndex |
-            (rowIndex < 45) ifTrue: [
-                aGrid putCell: rand atRandom atRow: rowIndex andCol: colIndex.
-            ] ifFalse: [
-                aGrid putCell: 0 atRow: rowIndex andCol: colIndex.
-            ].
-        ].
-    ].
+CAGrid class >> fill: aGrid [ 
+	| rand numCols numRows |
+	numCols := aGrid getCols.
+	numRows := aGrid getRows.
+	rand := #(1 1 1 1 2 2 3 4  4 7 7 6 6 6 6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 9 9).
+	1
+		to: numRows
+		do: [:rowIndex | 1
+				to: numCols
+				do: [:colIndex | rowIndex < 45
+						ifTrue: [aGrid
+								putCell: rand atRandom
+								atRow: rowIndex
+								andCol: colIndex]
+						ifFalse: [aGrid
+								putCell: 0
+								atRow: rowIndex
+								andCol: colIndex]]]
 ]
 
 {
