@@ -11,13 +11,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/14/2024 11:39'
+	#'squeak_changestamp' : 'Sars 6/14/2024 17:04'
 }
 CAGrid class >> fill: aGrid [ 
 	| rand numCols numRows |
 	numCols := aGrid getCols.
 	numRows := aGrid getRows.
-	rand := #(1 1 1 1 2 2 3 4  4 7 7 6 6 6 6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 9 9).
+	rand := #(1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 7 7 6 6 6 5 5 5 5 5 9 8 8).
 	1
 		to: numRows
 		do: [:rowIndex | 1
@@ -31,6 +31,25 @@ CAGrid class >> fill: aGrid [
 								putCell: 0
 								atRow: rowIndex
 								andCol: colIndex]]]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/14/2024 17:41'
+}
+CAGrid class >> fillTNTest: aGrid [ 
+	| numCols numRows col |
+	numCols := aGrid getCols.
+	numRows := aGrid getRows.
+	col := #(3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  3 3 3 3 3 3 3 3 3 3 8).
+	1
+		to: numRows
+		do: [:rowIndex | 1
+				to: numCols
+				do: [:colIndex | aGrid
+						putCell: col atRandom
+						atRow: rowIndex
+						andCol: colIndex]]
 ]
 
 {

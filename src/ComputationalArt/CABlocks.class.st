@@ -108,7 +108,7 @@ CABlocks >> colorOf: index [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 21:26'
+	#'squeak_changestamp' : 'Sars 6/14/2024 15:37'
 }
 CABlocks >> initialize [
 	blockNames := IdentityDictionary new at: 0 put: 'air';
@@ -131,7 +131,7 @@ CABlocks >> initialize [
 				 at: 6 put: Color red;
 				 at: 7 put: Color lightGray;
 				 at: 8 put: Color orange;
-				 at: 9 put: Color veryPaleRed;
+				 at: 9 put: Color lightRed;
 				 yourself
 ]
 
