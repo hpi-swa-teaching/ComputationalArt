@@ -39,7 +39,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/14/2024 11:54'
+	#'squeak_changestamp' : 'HaMa 6/14/2024 12:07'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |

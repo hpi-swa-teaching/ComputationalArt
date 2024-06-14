@@ -6,10 +6,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/14/2024 11:08'
+	#'squeak_changestamp' : 'HaMa 6/14/2024 12:14'
 }
 CARuleFishSwimLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
-	| me rightMe leftMe futureLeftMe swimmingBlocks swimThroughBlocks chance |
+	| me rightMe leftMe futureLeftMe swimmingBlocks swimThroughBlocks eatBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	rightMe := neighborMatrix at: 2 at: 3.
 	leftMe := neighborMatrix at: 2 at: 1.
@@ -19,6 +19,12 @@ CARuleFishSwimLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 				 yourself.
 	swimThroughBlocks := OrderedCollection new add: CABlocks water;
 				 yourself.
+	eatBlocks := OrderedCollection new add: CABlocks algae;
+				yourself.
+	(((swimmingBlocks includes: rightMe)
+			and: (eatBlocks includes: me))
+			and: chance < 30)
+		ifTrue: [^ CABlocks water].
 	(((swimmingBlocks includes: rightMe)
 			and: (swimThroughBlocks includes: me))
 			and: chance < 20)
