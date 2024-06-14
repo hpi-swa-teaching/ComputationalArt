@@ -39,7 +39,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 22:08'
+	#'squeak_changestamp' : 'HaMa 6/14/2024 11:54'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
@@ -61,6 +61,11 @@ CAGame >> start [
 				 add: CARuleGasDisappearEX new;
 				 add: CARuleFireOutEX new;
 				add: CARuleBurnEX new;
+				add: CARuleFishSwimLeftEX new;
+				add: CARuleFishSwimRightEX new;
+				add: CARuleFishSwimUpEX new;
+				add: CARuleFishSwimDownEX new;
+				add: CARuleFishDieEX new;
 				 yourself.
 	ruler := CARuler new.
 	grid := CAGrid new.

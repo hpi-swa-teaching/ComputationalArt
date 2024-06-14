@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 21:40'
+	#'squeak_changestamp' : 'HaMa 6/14/2024 11:44'
 }
 CARuleFallDownEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| aboveMe me belowMe fallingBlocks fallingThroughBlocks |
@@ -17,6 +17,7 @@ CARuleFallDownEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 				 add: CABlocks water;
 				 add: CABlocks algae;
 				add: CABlocks fire;
+				add: CABlocks fish;
 				 yourself.
 	fallingThroughBlocks := OrderedCollection new add: CABlocks air;
 				 add: CABlocks smoke;
