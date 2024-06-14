@@ -39,7 +39,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/14/2024 12:07'
+	#'squeak_changestamp' : 'Sars 6/14/2024 18:05'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
@@ -60,18 +60,20 @@ CAGame >> start [
 				 add: CARuleGasFlowRightEX new;
 				 add: CARuleGasDisappearEX new;
 				 add: CARuleFireOutEX new;
-				add: CARuleBurnEX new;
-				add: CARuleFishSwimLeftEX new;
-				add: CARuleFishSwimRightEX new;
-				add: CARuleFishSwimUpEX new;
-				add: CARuleFishSwimDownEX new;
-				add: CARuleFishDieEX new;
+				 add: CARuleBurnEX new;
+				 add: CARuleFishSwimLeftEX new;
+				 add: CARuleFishSwimRightEX new;
+				 add: CARuleFishSwimUpEX new;
+				 add: CARuleFishSwimDownEX new;
+				 add: CARuleFishDieEX new;
+				 add: CARuleTntSpreadEX new withOccurrences: 20;
 				 yourself.
 	ruler := CARuler new.
 	grid := CAGrid new.
-	CAGrid fill: grid.
+	CAGrid fillTNTest: grid.
 	screen attachGrid: grid.
-	maxIterations := 200.
+	screen step.
+	maxIterations := 100.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [(Delay forSeconds: frameDelay) wait.
