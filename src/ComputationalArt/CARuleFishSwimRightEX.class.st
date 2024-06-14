@@ -1,14 +1,14 @@
 Class {
-	#name : #CARuleFishSwimLeftEX,
+	#name : #CARuleFishSwimRightEX,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/14/2024 11:08'
+	#'squeak_changestamp' : 'HaMa 6/14/2024 11:11'
 }
-CARuleFishSwimLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleFishSwimRightEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe leftMe futureLeftMe swimmingBlocks swimThroughBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	rightMe := neighborMatrix at: 2 at: 3.
@@ -19,12 +19,12 @@ CARuleFishSwimLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 				 yourself.
 	swimThroughBlocks := OrderedCollection new add: CABlocks water;
 				 yourself.
-	(((swimmingBlocks includes: rightMe)
-			and: (swimThroughBlocks includes: me))
+	(((swimmingBlocks includes: me)
+			and: (swimThroughBlocks includes: rightMe))
 			and: chance < 20)
 		ifTrue: [^ rightMe].
-	((swimThroughBlocks includes: leftMe)
-			and: (swimmingBlocks includes: futureLeftMe))
+	((swimmingBlocks includes: leftMe)
+			and: (swimThroughBlocks includes: futureLeftMe))
 		ifTrue: [^ leftMe].
 	^ me
 ]
