@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 21:41'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:54'
 }
 CARulePyramidRightEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe belowMe leftMe belowRightMe futureLeftMe aboveLeftMe futureAboveLeftMe pyramidBlocks lightBlocks chance |
@@ -26,9 +26,9 @@ CARulePyramidRightEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 				 add: CABlocks fire;
 				 add: CABlocks water;
 				 yourself.
-	((((pyramidBlocks includes: me)
-			and: (pyramidBlocks includes: belowMe))
-			and: (lightBlocks includes: belowRightMe))
+	((pyramidBlocks includes: me)
+			and: (pyramidBlocks includes: belowMe)
+			and: (lightBlocks includes: belowRightMe)
 			and: chance < 10)
 		ifTrue: [^ belowRightMe].
 	((pyramidBlocks includes: aboveLeftMe)

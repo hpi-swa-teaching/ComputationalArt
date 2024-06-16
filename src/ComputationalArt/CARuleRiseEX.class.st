@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 20:42'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:55'
 }
 CARuleRiseEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| aboveMe me belowMe risingBlocks |
@@ -16,10 +16,10 @@ CARuleRiseEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 	risingBlocks := OrderedCollection new add: CABlocks smoke;
 				 yourself.
 	(me = CABlocks air
-			and: [risingBlocks includes: belowMe])
+			and: (risingBlocks includes: belowMe))
 		ifTrue: [^ belowMe].
 	((risingBlocks includes: me)
-			and: [aboveMe = CABlocks air])
+			and: (aboveMe = CABlocks air))
 		ifTrue: [^ CABlocks air].
 	^ me
 ]

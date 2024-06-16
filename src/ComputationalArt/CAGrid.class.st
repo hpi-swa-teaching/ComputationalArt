@@ -11,12 +11,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/14/2024 17:04'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CAGrid class >> fill: aGrid [ 
 	| rand numCols numRows |
-	numCols := aGrid getCols.
-	numRows := aGrid getRows.
+	numCols := aGrid numCols.
+	numRows := aGrid numRows.
 	rand := #(1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 7 7 6 6 6 5 5 5 5 5 9 8 8).
 	1
 		to: numRows
@@ -35,12 +35,12 @@ CAGrid class >> fill: aGrid [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 15:25'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CAGrid class >> fillTNTest: aGrid [ 
 	| numCols numRows col |
-	numCols := aGrid getCols.
-	numRows := aGrid getRows.
+	numCols := aGrid numCols.
+	numRows := aGrid numRows.
 	col := #(3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ).
 	1
 		to: numRows
@@ -76,24 +76,6 @@ CAGrid >> deepcopy [
 CAGrid >> getCellAtRow: row andCol: col [
 
 	^grid at: row at: col
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 23:50'
-}
-CAGrid >> getCols [
-
-	^numCols
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 11:42'
-}
-CAGrid >> getGrid [
-
-	^grid
 ]
 
 {
@@ -157,11 +139,11 @@ CAGrid >> getNeighborsOfCellAtRow: row andCol: col [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 23:50'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
-CAGrid >> getRows [
+CAGrid >> grid [
 
-	^numRows
+	^grid
 ]
 
 {
@@ -181,6 +163,24 @@ CAGrid >> initialize [
            
         ].
     ].
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:44'
+}
+CAGrid >> numCols [
+
+	^numCols
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+}
+CAGrid >> numRows [
+
+	^numRows
 ]
 
 {
