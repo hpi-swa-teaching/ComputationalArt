@@ -9,14 +9,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 16:03'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CARuler >> applyRules: aRuleSet to: aGrid [
     
     | newGrid currGrid numRows numCols cellNeighbors newCellNeighbors newCellVal|
 	
-    numRows := aGrid getRows.
-    numCols := aGrid getCols.
+    numRows := aGrid numRows.
+    numCols := aGrid numCols.
 
     currGrid := aGrid deepcopy.
     newGrid := aGrid.
@@ -41,14 +41,14 @@ CARuler >> applyRules: aRuleSet to: aGrid [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 13:37'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CARuler >> printGrid: aGrid [
     
     | numRows numCols |
     
-    numRows :=  aGrid getRows.
-    numCols := aGrid getCols.
+    numRows :=  aGrid numRows.
+    numCols := aGrid numCols.
 
     1 to: numRows do: [:i |
         1 to: numCols do: [:j |

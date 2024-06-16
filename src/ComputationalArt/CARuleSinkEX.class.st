@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 21:46'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:56'
 }
 CARuleSinkEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| aboveMe me belowMe sinkingBlocks sinkThroughBlocks |
@@ -18,11 +18,11 @@ CARuleSinkEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 	sinkThroughBlocks := OrderedCollection new add: CABlocks water;
 				 add: CABlocks fire;
 				 yourself.
-	( (sinkThroughBlocks includes: me)
-			and: [sinkingBlocks includes: aboveMe])
+	((sinkThroughBlocks includes: me)
+			and: (sinkingBlocks includes: aboveMe))
 		ifTrue: [^ aboveMe].
 	((sinkingBlocks includes: me)
-			and: [sinkThroughBlocks includes: belowMe])
+			and: (sinkThroughBlocks includes: belowMe))
 		ifTrue: [^ belowMe].
 	^ me
 ]

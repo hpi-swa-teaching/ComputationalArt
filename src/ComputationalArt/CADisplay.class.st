@@ -12,9 +12,9 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 15:11'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:43'
 }
-CADisplay >> attachGame: aGame [
+CADisplay >> attachedGame: aGame [
 
 	attachedGame := aGame.
 
@@ -22,21 +22,12 @@ CADisplay >> attachGame: aGame [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/4/2024 14:05'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:43'
 }
-CADisplay >> attachGrid: aGrid [
+CADisplay >> attachedGrid: aGrid [
 
 	attachedGrid := aGrid.
 
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/3/2024 23:44'
-}
-CADisplay >> getViewMorph [
-	
-	^viewMorph
 ]
 
 {
@@ -53,16 +44,16 @@ CADisplay >> initialize [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/4/2024 13:35'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CADisplay >> showGrid: aGrid [
 
 |grid cols rows origin size border gap blockLookup|
 
 blockLookup := CABlocks new.
-grid := aGrid getGrid.	
-cols := aGrid getCols.
-rows := aGrid getRows.
+grid := aGrid grid.	
+cols := aGrid numCols.
+rows := aGrid numRows.
 origin := viewMorph position.
 size := 10.
 border := 1.
@@ -88,15 +79,15 @@ self wipeCells.
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 15:18'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CADisplay >> step [
 	| grid cols rows origin size border gap blockLookup aGrid |
 	aGrid := attachedGrid.
 	blockLookup := CABlocks new.
-	grid := aGrid getGrid.
-	cols := aGrid getCols.
-	rows := aGrid getRows.
+	grid := aGrid grid.
+	cols := aGrid numCols.
+	rows := aGrid numRows.
 	origin := viewMorph position.
 	size := 10.
 	border := 1.
@@ -131,6 +122,15 @@ CADisplay >> step [
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
 							cellMorph
 								color: (blockLookup colorOf: cell)]]]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:43'
+}
+CADisplay >> viewMorph [
+	
+	^viewMorph
 ]
 
 {

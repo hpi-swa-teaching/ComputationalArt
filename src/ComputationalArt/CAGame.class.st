@@ -20,6 +20,24 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:52'
+}
+CAGame >> brushSize: aSize [
+	brushSize := aSize
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:51'
+}
+CAGame >> frameDelay: aSecondCount [
+	
+	frameDelay := aSecondCount
+	
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/16/2024 18:00'
 }
 CAGame >> putCellAtRow: row andCol: col [ 
@@ -56,44 +74,25 @@ CAGame >> setActiveCellTypeTo: cellType [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 17:22'
-}
-CAGame >> setBrushSize: size [
-	brushSize := size
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 14:19'
-}
-CAGame >> setFrameDelay: seconds [
-
-	frameDelay := seconds
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 15:31'
+	#'squeak_changestamp' : 'Sars 6/16/2024 20:50'
 }
 CAGame >> skipAhead: stepCount [ 
 
 	stepCount timesRepeat: [grid := ruler applyRules: ruleSet to: grid.].
-	
-	
 	screen step
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 17:22'
+	#'squeak_changestamp' : 'Sars 6/16/2024 21:01'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
 	isRunning := true.
 	frameDelay := 0.5.
+	brushSize := 1.
+	ruler := CARuler new.
 	activeCellType := CABlocks tnt.
-	screen := CADisplay new.
-	cellViewMorph := screen getViewMorph.
 	ruleSet := OrderedCollection new add: CARuleFallDownEX new;
 				 add: CARuleSinkEX new;
 				 add: CARuleFluidFlowLeftEX new;
@@ -115,12 +114,12 @@ CAGame >> start [
 				 add: CARuleFishDieEX new;
 				 add: CARuleTntSpreadEX new withOccurrences: 1;
 				 yourself.
-	ruler := CARuler new.
-	brushSize := 1.
 	grid := CAGrid new.
-	screen attachGame: self.
-	CAGrid fillTNTest: grid.
-	screen attachGrid: grid.
+	CAGrid fill: grid.
+	screen := CADisplay new.
+	screen attachedGame: self.
+	screen attachedGrid: grid.
+	cellViewMorph := screen viewMorph.
 	screen step.
 	maxIterations := 100.
 	iterationCount := 0.
