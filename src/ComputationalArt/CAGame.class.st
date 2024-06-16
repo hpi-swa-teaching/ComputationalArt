@@ -9,7 +9,8 @@ Class {
 		'cellViewMorph',
 		'frameDelay',
 		'isRunning',
-		'activeCellType'
+		'activeCellType',
+		'brushSize'
 	],
 	#classInstVars : [
 		'display'
@@ -19,12 +20,29 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 14:02'
+	#'squeak_changestamp' : 'Sars 6/16/2024 18:00'
 }
 CAGame >> putCellAtRow: row andCol: col [ 
-	
-	grid putCell: activeCellType atRow: row andCol: col.
-	isRunning ifFalse: [screen step]
+	| originRow originCol placeRow placeCol |
+	originRow := row - brushSize.
+	originCol := col - brushSize.
+	1
+		to: brushSize * 2 - 1
+		do: [:rowIndex | 1
+				to: brushSize * 2 - 1
+				do: [:colIndex | 
+					placeRow := originRow + rowIndex.
+					placeCol := originCol + colIndex.
+					(placeRow > 0
+							and: placeRow < 101
+							and: placeCol > 0
+							and: placeCol < 101)
+						ifTrue: [grid
+								putCell: activeCellType
+								atRow: placeRow
+								andCol: placeCol]]].
+	isRunning
+		ifFalse: [screen step]
 ]
 
 {
@@ -34,6 +52,14 @@ CAGame >> putCellAtRow: row andCol: col [
 CAGame >> setActiveCellTypeTo: cellType [
 
 	activeCellType := cellType
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 17:22'
+}
+CAGame >> setBrushSize: size [
+	brushSize := size
 ]
 
 {
@@ -59,7 +85,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 15:23'
+	#'squeak_changestamp' : 'Sars 6/16/2024 17:22'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
@@ -90,6 +116,7 @@ CAGame >> start [
 				 add: CARuleTntSpreadEX new withOccurrences: 1;
 				 yourself.
 	ruler := CARuler new.
+	brushSize := 1.
 	grid := CAGrid new.
 	screen attachGame: self.
 	CAGrid fillTNTest: grid.
