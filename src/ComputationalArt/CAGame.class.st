@@ -59,7 +59,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 13:58'
+	#'squeak_changestamp' : 'Sars 6/16/2024 15:23'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
@@ -87,10 +87,11 @@ CAGame >> start [
 				 add: CARuleFishSwimUpEX new;
 				 add: CARuleFishSwimDownEX new;
 				 add: CARuleFishDieEX new;
-				 add: CARuleTntSpreadEX new withOccurrences: 20;
+				 add: CARuleTntSpreadEX new withOccurrences: 1;
 				 yourself.
 	ruler := CARuler new.
 	grid := CAGrid new.
+	screen attachGame: self.
 	CAGrid fillTNTest: grid.
 	screen attachGrid: grid.
 	screen step.
