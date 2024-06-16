@@ -4,10 +4,21 @@ Class {
 	#instVars : [
 		'viewMorph',
 		'cells',
-		'attachedGrid'
+		'attachedGrid',
+		'attachedGame'
 	],
 	#category : #ComputationalArt
 }
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 15:11'
+}
+CADisplay >> attachGame: aGame [
+
+	attachedGame := aGame.
+
+]
 
 {
 	#category : #'as yet unclassified',
@@ -77,7 +88,7 @@ self wipeCells.
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/5/2024 15:20'
+	#'squeak_changestamp' : 'Sars 6/16/2024 15:18'
 }
 CADisplay >> step [
 	| grid cols rows origin size border gap blockLookup aGrid |
@@ -91,28 +102,35 @@ CADisplay >> step [
 	border := 1.
 	gap := 0.
 	cells isEmpty
-		ifTrue: [Transcript show: 'grid was empty'; cr.
+		ifTrue: [Transcript show: 'grid was empty';
+				 cr.
 			(1 to: rows)
 				do: [:rowIndex | (1 to: cols)
 						do: [:colIndex | 
-							| cell cellMorph |
+							| cellMorph cell |
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
-							cellMorph := Morph new extent: size @ size;
+							cellMorph := CACellMorph new extent: size @ size;
 										 borderColor: Color black;
-										 color: ( blockLookup colorOf: cell);
+										
+										color: (blockLookup colorOf: cell);
 										 borderWidth: border;
-										 position: colIndex - 1 * (size + gap) @ (rowIndex - 1 * (size + gap)) + origin.
+										 position: colIndex - 1 * (size + gap) @ (rowIndex - 1 * (size + gap)) + origin;
+										row: rowIndex;
+										col: colIndex;
+										game: attachedGame.
 							viewMorph addMorph: cellMorph.
 							cells add: cellMorph]]].
 	cells isEmpty
-		ifFalse: [Transcript show: 'grid was not empty'; cr.
+		ifFalse: [Transcript show: 'grid was not empty';
+				 cr.
 			(1 to: rows)
 				do: [:rowIndex | (1 to: cols)
 						do: [:colIndex | 
-							| cellMorph cell|
+							| cellMorph cell |
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
-							cellMorph color: ( blockLookup colorOf: cell)]]]
+							cellMorph
+								color: (blockLookup colorOf: cell)]]]
 ]
 
 {
