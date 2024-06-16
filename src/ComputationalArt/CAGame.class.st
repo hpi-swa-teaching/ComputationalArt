@@ -8,13 +8,33 @@ Class {
 		'grid',
 		'cellViewMorph',
 		'frameDelay',
-		'isRunning'
+		'isRunning',
+		'activeCellType'
 	],
 	#classInstVars : [
 		'display'
 	],
 	#category : #ComputationalArt
 }
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 14:02'
+}
+CAGame >> putCellAtRow: row andCol: col [ 
+	
+	grid putCell: activeCellType atRow: row andCol: col.
+	isRunning ifFalse: [screen step]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 6/16/2024 14:19'
+}
+CAGame >> setActiveCellTypeTo: cellType [
+
+	activeCellType := cellType
+]
 
 {
 	#category : #'as yet unclassified',
@@ -39,12 +59,13 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/14/2024 18:05'
+	#'squeak_changestamp' : 'Sars 6/16/2024 13:58'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop |
 	isRunning := true.
 	frameDelay := 0.5.
+	activeCellType := CABlocks tnt.
 	screen := CADisplay new.
 	cellViewMorph := screen getViewMorph.
 	ruleSet := OrderedCollection new add: CARuleFallDownEX new;
