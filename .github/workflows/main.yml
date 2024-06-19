@@ -1,9 +1,14 @@
-steps:
-  - uses: actions/checkout@v2
-  - uses: hpi-swa/setup-smalltalkCI@v1
-    id: smalltalkci
-    with:
-      smalltalk-image: 'Squeak64-trunk'
-  - run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
-    shell: bash
-    timeout-minutes: 15
+            - name: Setup smalltalkCI
+  # You may pin to the exact commit or the version.
+  # uses: hpi-swa/setup-smalltalkCI@decbf59d73f43aad9292c80c8f1e25ed908d8a68
+  uses: hpi-swa/setup-smalltalkCI@1.3.4
+  with:
+    # Smalltalk image selection (see smalltalkCI's list of supported images)
+    smalltalk-image: # optional
+    # Deprecated, please use smalltalk-image
+    smalltalk-version: # optional
+    # GitHub slug of the smalltalkCI source repository
+    smalltalkCI-source: # optional, default is hpi-swa/smalltalkCI
+    # Branch or tag to use from smalltalkCI repository
+    smalltalkCI-branch: # optional, default is master
+          
