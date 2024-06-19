@@ -9,10 +9,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 12:06'
+	#'squeak_changestamp' : 'JAL 6/18/2024 15:28'
 }
 CAOverlayList >> fromListOfStrings: aListOfStrings [
-	aListOfStrings withIndexDo: [:type :i | |item|
+	aListOfStrings reverse withIndexDo: [:type :i | |item|
 		item := CAOverlayItem new.
 		item initialize; contents: type;
 		onclick: [:evt | self onItemClick: item].
