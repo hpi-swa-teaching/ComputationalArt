@@ -9,6 +9,12 @@
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
+			#name : 'BaselineOfComputationalArt'
+		},
+		#path : @4
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
 			#name : 'ComputationalArt'
 		},
 		#path : @4
