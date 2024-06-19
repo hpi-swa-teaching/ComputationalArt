@@ -25,7 +25,7 @@ CAOverlay >> game: aCAGame [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 15:37'
+	#'squeak_changestamp' : 'JAL 6/19/2024 16:08'
 }
 CAOverlay >> initialize [
 	super initialize.
@@ -34,8 +34,8 @@ CAOverlay >> initialize [
 	self extent: 300@600.
 
 	self addMorph: [|c| c:= CAOverlayPlayMenu new. c initialize. c ] value.
-	self addMorph: [|c| c:= CAOverlayBlockMenu new. c initialize. c y: 200. c ] value.
-	self addMorph: [|c| c:= CAOverlayBrushMenu new. c initialize. c y: 550. c ] value.
+	self addMorph: [|c| c:= CAOverlayBlockMenu new. c initialize. c y: 170. c ] value.
+	self addMorph: [|c| c:= CAOverlayBrushMenu new. c initialize. c y: 920. c ] value.
 	
 
 ]

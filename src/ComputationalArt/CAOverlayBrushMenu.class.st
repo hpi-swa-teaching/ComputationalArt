@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 15:36'
+	#'squeak_changestamp' : 'JAL 6/19/2024 15:54'
 }
 CAOverlayBrushMenu >> initialize [
 	| brushList |
@@ -34,17 +34,6 @@ CAOverlayBrushMenu >> initialize [
 		].
 	self addMorph: brushList.
 	brushList y: 70.
-	
-	"blockTypes withIndexDo: [:type :i | |item|
-		Transcript show: type.
-		item := CAOverlayItem new.
-		item initialize; contents: type;
-		onclick: [:evt | 
-			currentlySelectedBlock:= type. 
-			self submorphsDo: [:t| t color: Color white]. 
-			item color: Color green.].
-		item y: (i * 70); x: 150.
-		self addMorph: item ]."
 	
 
 ]
