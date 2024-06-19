@@ -1,0 +1,16 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'BaselineOfComputationalArt',
+      #directory : 'src',
+      #load : [ 'tests' ],
+      #onWarningLog : true,
+      #platforms : [ #squeak, #pharo, #gemstone ]
+    }
+  ],
+  #testing : {
+    #include : {
+      #classes : [ #ExampleTest ]
+    }
+  }
+}
