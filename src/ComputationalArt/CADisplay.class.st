@@ -79,7 +79,7 @@ self wipeCells.
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#'squeak_changestamp' : 'Sars 6/19/2024 16:41'
 }
 CADisplay >> step [
 	| grid cols rows origin size border gap blockLookup aGrid |
@@ -101,7 +101,7 @@ CADisplay >> step [
 							| cellMorph cell |
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := CACellMorph new extent: size @ size;
-										 borderColor: Color black;
+										 borderColor: Color gray;
 										
 										color: (blockLookup colorOf: cell);
 										 borderWidth: border;

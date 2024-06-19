@@ -38,7 +38,7 @@ CAGame >> frameDelay: aSecondCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 18:00'
+	#'squeak_changestamp' : 'Sars 6/19/2024 16:20'
 }
 CAGame >> putCellAtRow: row andCol: col [ 
 	| originRow originCol placeRow placeCol |
@@ -59,8 +59,7 @@ CAGame >> putCellAtRow: row andCol: col [
 								putCell: activeCellType
 								atRow: placeRow
 								andCol: placeCol]]].
-	isRunning
-		ifFalse: [screen step]
+	screen step
 ]
 
 {
@@ -84,12 +83,12 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:08'
+	#'squeak_changestamp' : 'Sars 6/19/2024 16:50'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop ui|
 	isRunning := true.
-	frameDelay := 0.5.
+	frameDelay := 0.2.
 	brushSize := 1.
 	ruler := CARuler new.
 	activeCellType := CABlocks tnt.
@@ -121,21 +120,22 @@ CAGame >> start [
 	screen attachedGrid: grid.
 	cellViewMorph := screen viewMorph.
 	
+	
 	ui := CAOverlay new.
 	ui position: -200@100.
 	ui game: self.
 	cellViewMorph addMorph: ui.
-	
+	cellViewMorph position: 750@250.
 	
 	screen step.
-	maxIterations := 50.
+	maxIterations := 150.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [(Delay forSeconds: frameDelay) wait.
 					isRunning
 						ifTrue: [grid := ruler applyRules: ruleSet to: grid.
-							screen step].
-					iterationCount := iterationCount + 1].
+							screen step. iterationCount := iterationCount + 1].
+					].
 			Transcript show: 'Game loop terminated after ' , maxIterations printString , ' iterations.';
 				 cr] fork
 ]
