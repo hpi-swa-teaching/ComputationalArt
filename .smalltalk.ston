@@ -1,9 +1,13 @@
 SmalltalkCISpec {
-  #loading : [
-    SCIMetacelloLoadSpec {
-      #baseline : 'BaselineOfComputationalArt',
-      #directory : 'src',
-      #platforms : [ #squeak, #pharo, #gemstone ]
-    }
-  ]
+	#loading : [
+		SCIMetacelloLoadSpec {
+			#baseline : 'BaselineOfComputationalArt',
+			#directory : 'src',
+			#platforms : [#squeak],
+			#load : ['tests']
+		}
+	],
+	#testing : {
+		#packages : ['ComputationalArtTests']
+	}
 }
