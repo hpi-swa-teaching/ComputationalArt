@@ -35,7 +35,7 @@ CACellMorph >> handlesMouseDown: anEvent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 15:19'
+	#'squeak_changestamp' : 'Sars 6/19/2024 16:24'
 }
 CACellMorph >> mouseDown: anEvent [ 
 	anEvent redButtonPressed
