@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 15:36'
+	#'squeak_changestamp' : 'JAL 6/19/2024 15:54'
 }
 CAOverlayPlayMenu >> initialize [
 	| pauseList |
@@ -17,9 +17,7 @@ CAOverlayPlayMenu >> initialize [
 	"self color: Color black."
 	self color: Color transparent.
 	self extent: 300@300.
-	self addMorph: [|s| s := (CAOverlayItem new) initialize.
-		s onclick: [:evt | self submorphsDo: [:t| t color: Color white]. s color: Color green];
-		x: 30; contents: 'Pause Menu'. s] value.
+	self addMorph: [|s| s := (CAOverlayItem new) initialize. s x: 30; contents: 'Pause Menu'. s] value.
 	
 	pauseList := CAOverlayList new fromListOfStrings: #('>' '+1' '+10').
 	pauseList horizontalWithMargin: 10.
@@ -31,19 +29,6 @@ CAOverlayPlayMenu >> initialize [
 	].
 	self addMorph: pauseList.
 	pauseList y: 70.
-	
-	"self addMorph: [|s| 
-		s := (CAOverlayItem new) initialize. s y: 70. s x: 30. s contents: '>'. 
-		s onclick: [:evt | self submorphsDo: [:t| t color: Color white]. s color: Color green. ]. s] value.
-	self addMorph: [|s| 
-		s := (CAOverlayItem new) initialize. s y: 70. s x: 80. s contents: '='. 
-		s onclick: [:evt | self submorphsDo: [:t| t color: Color white]. s color: Color green.]. s] value.
-	self addMorph: [|s| 
-		s := (CAOverlayItem new) initialize. s y: 70. s x: 130. s contents: '+1'. 
-		s onclick: [:evt | self submorphsDo: [:t| t color: Color white]. s color: Color green]. s] value.
-	self addMorph: [|s| 
-		s := (CAOverlayItem new) initialize. s y: 70. s x: 200. s contents: '+10'. 
-		s onclick: [:evt | self submorphsDo: [:t| t color: Color white]. s color: Color green]. s] value."
 	
 
 ]
