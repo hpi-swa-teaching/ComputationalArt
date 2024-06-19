@@ -1,10 +1,16 @@
 [
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'ComputationalArt'
+			#name : 'ComputationalArtTests'
 		},
 		#path : FSAbsolutePath [
 			'src'
 		]
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'ComputationalArt'
+		},
+		#path : @4
 	}
 ]
