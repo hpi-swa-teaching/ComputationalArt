@@ -10,6 +10,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JAL 6/18/2024 12:08'
+}
+CAOverlayItem >> contents [
+	^stringmorph contents
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JAL 6/5/2024 16:06'
 }
 CAOverlayItem >> contents: aString [
@@ -41,12 +49,12 @@ CAOverlayItem >> initialize [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 15:26'
+	#'squeak_changestamp' : 'JAL 6/18/2024 12:21'
 }
 CAOverlayItem >> mouseDown: evt [
 	Transcript show: evt.
 	Transcript show: onclickhandler.
-	onclickhandler value: evt.
+	onclickhandler ifNotNil: [onclickhandler value: evt].
 	
 ]
 
