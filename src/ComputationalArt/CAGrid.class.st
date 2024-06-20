@@ -11,6 +11,25 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 6/20/2024 10:48'
+}
+CAGrid class >> clear: aGrid [ 
+	| numCols numRows col |
+	numCols := aGrid numCols.
+	numRows := aGrid numRows.
+	col := #(0 0).
+	1
+		to: numRows
+		do: [:rowIndex | 1
+				to: numCols
+				do: [:colIndex | aGrid
+						putCell: col atRandom
+						atRow: rowIndex
+						andCol: colIndex]]
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CAGrid class >> fill: aGrid [ 
@@ -35,19 +54,36 @@ CAGrid class >> fill: aGrid [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#'squeak_changestamp' : 'HaMa 6/20/2024 11:14'
 }
-CAGrid class >> fillTNTest: aGrid [ 
-	| numCols numRows col |
+CAGrid class >> fillStone: aGrid [ 
+	| numCols numRows |
 	numCols := aGrid numCols.
 	numRows := aGrid numRows.
-	col := #(3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ).
 	1
 		to: numRows
 		do: [:rowIndex | 1
 				to: numCols
 				do: [:colIndex | aGrid
-						putCell: col atRandom
+						putCell: CABlocks stone
+						atRow: rowIndex
+						andCol: colIndex]]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'HaMa 6/20/2024 11:14'
+}
+CAGrid class >> fillTNT: aGrid [ 
+	| numCols numRows |
+	numCols := aGrid numCols.
+	numRows := aGrid numRows.
+	1
+		to: numRows
+		do: [:rowIndex | 1
+				to: numCols
+				do: [:colIndex | aGrid
+						putCell: CABlocks tnt
 						atRow: rowIndex
 						andCol: colIndex]]
 ]
