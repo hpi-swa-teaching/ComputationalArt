@@ -91,14 +91,6 @@ CABlocks class >> wood [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:34'
-}
-CABlocks >> blockNum [
-	^ blockNum
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/3/2024 23:46'
 }
 CABlocks >> colorOf: index [
