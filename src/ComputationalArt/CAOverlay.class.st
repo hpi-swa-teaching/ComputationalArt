@@ -25,7 +25,7 @@ CAOverlay >> game: aCAGame [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/23/2024 16:48'
+	#'squeak_changestamp' : 'JAL 6/23/2024 17:19'
 }
 CAOverlay >> initialize [
 	| lastHeight menus |
@@ -39,16 +39,10 @@ CAOverlay >> initialize [
 		do: [:m | 
 			m y: lastHeight.
 			m fitChildren;
-				padding: (Rectangle origin: 10 @ 10 corner: 10 @ 30).
+				padding: (Rectangle origin: 10 @ 10 corner: 10 @ 50).
 			lastHeight := lastHeight + m height.
 			self addMorph: m].
 	self fitChildren.
-	self
-		padding: (Rectangle origin: 10 @ 10 corner: 10 @ 10).
-	self
-		color: (Color
-				r: 0.5
-				g: 0.5
-				b: 0.5
-				alpha: 0.3)
+	self padding: (Rectangle origin: 10 @ 10 corner: 10 @ 10).
+	self color: (Color r: 0.5 g: 0.5 b: 0.5 alpha: 0.3)
 ]

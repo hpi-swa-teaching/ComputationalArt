@@ -20,6 +20,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JAL 6/23/2024 17:34'
+}
+CAGame >> activeCellType [
+	^activeCellType
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/16/2024 20:52'
 }
 CAGame >> brushSize: aSize [

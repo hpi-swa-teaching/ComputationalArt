@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 15:03'
+	#'squeak_changestamp' : 'JAL 6/23/2024 17:30'
 }
 CAOverlayBlockMenu >> initialize [
 	| blockList |
