@@ -32,14 +32,17 @@ CADisplay >> attachedGrid: aGrid [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/4/2024 13:34'
+	#'squeak_changestamp' : 'Sars 6/23/2024 15:54'
 }
 CADisplay >> initialize [
 	cells := OrderedCollection new.
-	viewMorph := Morph new.
-	viewMorph bounds: (100@100 corner: 1100@1100).
-	viewMorph color: Color white.
-	viewMorph openInWorldOrWorldlet.
+	viewMorph := Morph new
+				bounds: (100 @ 100 corner: 1450 @ 1160); 
+				color: (Color r:  176/255 g: 196/255 b: 222/255); 
+				borderColor: Color gray;
+				borderWidth: 5;
+				openInWorldOrWorldlet; 
+				yourself.
 ]
 
 {
@@ -79,7 +82,7 @@ self wipeCells.
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:41'
+	#'squeak_changestamp' : 'Sars 6/23/2024 15:39'
 }
 CADisplay >> step [
 	| grid cols rows origin size border gap blockLookup aGrid |
@@ -88,7 +91,7 @@ CADisplay >> step [
 	grid := aGrid grid.
 	cols := aGrid numCols.
 	rows := aGrid numRows.
-	origin := viewMorph position.
+	origin := viewMorph position + (320@30).
 	size := 10.
 	border := 1.
 	gap := 0.
