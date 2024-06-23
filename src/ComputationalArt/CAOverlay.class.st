@@ -30,7 +30,6 @@ CAOverlay >> game: aCAGame [
 CAOverlay >> initialize [
 	| lastHeight menus|
 	super initialize.
-	self color: Color transparent.
 	
 	menus := OrderedCollection new.
 	menus add: CAOverlayPlayMenu new.
@@ -46,6 +45,4 @@ CAOverlay >> initialize [
 	self fitChildren.
 	self padding: (Rectangle origin: 10@10 corner: 10@10).
 	self color: Color gray.
-	
-
 ]

@@ -83,7 +83,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:50'
+	#'squeak_changestamp' : 'Sars 6/23/2024 15:56'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop ui|
@@ -122,13 +122,13 @@ CAGame >> start [
 	
 	
 	ui := CAOverlay new.
-	ui position: -200@100.
+	ui position: 130@130.
 	ui game: self.
 	cellViewMorph addMorph: ui.
 	cellViewMorph position: 750@250.
 	
 	screen step.
-	maxIterations := 150.
+	maxIterations := 300.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [(Delay forSeconds: frameDelay) wait.
