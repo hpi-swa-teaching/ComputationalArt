@@ -25,24 +25,30 @@ CAOverlay >> game: aCAGame [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 15:27'
+	#'squeak_changestamp' : 'Sars 6/23/2024 16:48'
 }
 CAOverlay >> initialize [
-	| lastHeight menus|
+	| lastHeight menus |
 	super initialize.
-	
 	menus := OrderedCollection new.
 	menus add: CAOverlayPlayMenu new.
 	menus add: CAOverlayBlockMenu new.
 	menus add: CAOverlayBrushMenu new.
-	
-	lastHeight := 0. 
-	menus do: [:m | 
-		m y: lastHeight.
-		m fitChildren; padding: (Rectangle origin: 10@10 corner: 10@30).
-		lastHeight := lastHeight + m height.
-	self addMorph: m].
+	lastHeight := 0.
+	menus
+		do: [:m | 
+			m y: lastHeight.
+			m fitChildren;
+				padding: (Rectangle origin: 10 @ 10 corner: 10 @ 30).
+			lastHeight := lastHeight + m height.
+			self addMorph: m].
 	self fitChildren.
-	self padding: (Rectangle origin: 10@10 corner: 10@10).
-	self color: Color gray.
+	self
+		padding: (Rectangle origin: 10 @ 10 corner: 10 @ 10).
+	self
+		color: (Color
+				r: 0.5
+				g: 0.5
+				b: 0.5
+				alpha: 0.3)
 ]
