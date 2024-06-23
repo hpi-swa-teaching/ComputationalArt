@@ -1,25 +1,19 @@
 Class {
 	#name : #CAOverlayBlockMenu,
-	#superclass : #Morph,
-	#instVars : [
-		'currentlySelectedBlock'
-	],
+	#superclass : #CAOverlayItem,
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 16:06'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:03'
 }
 CAOverlayBlockMenu >> initialize [
 	| blockList |
 	
 	super initialize.
-	"self color: Color black."
-	self color: Color transparent.
-	self extent: 300@300.
 	
-	self addMorph: [|s| s := (CAOverlayItem new) initialize. s contents: 'BlockMenu'. s] value.
+	self addMorph: [|s| s := (CAOverlayListItem new) initialize. s contents: 'BlockMenu'. s] value.
 	
 	blockList := CAOverlayList new fromListOfStrings: 
 	#('Water' 'Sand' 'Stone' 'Air' 'TNT' 'Wood' 'Algae' 'Fire' 'Fish' 'Smoke').
@@ -40,17 +34,6 @@ CAOverlayBlockMenu >> initialize [
 		].
 	self addMorph: blockList.
 	blockList y: 70.
-	
-	"blockTypes withIndexDo: [:type :i | |item|
-		Transcript show: type.
-		item := CAOverlayItem new.
-		item initialize; contents: type;
-		onclick: [:evt | 
-			currentlySelectedBlock:= type. 
-			self submorphsDo: [:t| t color: Color white]. 
-			item color: Color green.].
-		item y: (i * 70); x: 150.
-		self addMorph: item ]."
 	
 
 ]

@@ -1,85 +1,43 @@
 Class {
 	#name : #CAOverlayItem,
 	#superclass : #Morph,
-	#instVars : [
-		'onclickhandler',
-		'stringmorph'
-	],
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 12:08'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:00'
 }
-CAOverlayItem >> contents [
-	^stringmorph contents
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 16:06'
-}
-CAOverlayItem >> contents: aString [
-	stringmorph contents: aString.
-	self extent: (stringmorph extent).
+CAOverlayItem >> fitChildren [
+	|originX originY cornerX cornerY|
+	originX := 10000. originY := 10000. cornerX := 0. cornerY:= 0.
+	self submorphsDo: [:s | s bounds corner x < originX
+		ifTrue: [originX := s bounds origin x]].
+	self submorphsDo: [:s | s bounds corner y < originY
+		ifTrue: [originY := (s bounds origin y)]].
+	self submorphsDo: [:s | s bounds corner x > cornerX
+		ifTrue: [cornerX := s bounds corner x]].
+	self submorphsDo: [:s | s bounds corner y > cornerY
+		ifTrue: [cornerY := (s bounds corner y)]].
 	
+	self bounds: (Rectangle origin: originX@originY corner: cornerX@cornerY).
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 15:11'
-}
-CAOverlayItem >> handlesMouseDown: evt [
-    ^true
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 16:06'
+	#'squeak_changestamp' : 'JAL 6/23/2024 14:13'
 }
 CAOverlayItem >> initialize [
 	super initialize.
-	stringmorph := StringMorph new.
-	self color: Color white.
-	self addMorph: stringmorph.
-	self extent: (stringmorph extent).
-	^self.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 12:21'
-}
-CAOverlayItem >> mouseDown: evt [
-	Transcript show: evt.
-	Transcript show: onclickhandler.
-	onclickhandler ifNotNil: [onclickhandler value: evt].
+	self color: Color transparent.
 	
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 15:12'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:17'
 }
-CAOverlayItem >> mouseUp: evt [
-    Transcript show: evt.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 15:24'
-}
-CAOverlayItem >> onclick: aBlock [
-	onclickhandler := aBlock.
-	
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/5/2024 15:27'
-}
-CAOverlayItem >> onclickhandler [
-	 ^onclickhandler
-	
+CAOverlayItem >> padding: aRectangle [
+	self extent: (self extent + aRectangle origin + aRectangle corner).
+	self submorphsDo: [:s | s position: (s position + aRectangle origin)]
 ]

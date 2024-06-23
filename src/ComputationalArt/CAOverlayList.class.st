@@ -1,6 +1,6 @@
 Class {
 	#name : #CAOverlayList,
-	#superclass : #Morph,
+	#superclass : #CAOverlayItem,
 	#instVars : [
 		'onClickHandler'
 	],
@@ -9,11 +9,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 15:28'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:03'
 }
 CAOverlayList >> fromListOfStrings: aListOfStrings [
 	aListOfStrings reverse withIndexDo: [:type :i | |item|
-		item := CAOverlayItem new.
+		item := CAOverlayListItem new.
 		item initialize; contents: type;
 		onclick: [:evt | self onItemClick: item].
 		self addMorph: item ].
@@ -30,22 +30,21 @@ CAOverlayList >> horizontal [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 11:55'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:02'
 }
 CAOverlayList >> horizontalWithMargin: aMargin [
 	| left |
 	left := 0.
 	self submorphsDo: [ :s| s x: left + (s width / 2). left := left + s width + aMargin].
-	self width: (left - aMargin).
+	self fitChildren.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 12:00'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:01'
 }
 CAOverlayList >> initialize [	
 	super initialize.
-	"self color: Color black."
 	self color: Color transparent.
 	
 
@@ -77,11 +76,12 @@ CAOverlayList >> vertical [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/18/2024 11:56'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:01'
 }
 CAOverlayList >> verticalWithMargin: aMargin [
 	| top |
 	top := 0.
 	self submorphsDo: [ :s| s y: top. top := top + s height + aMargin].
-	self height: (top - aMargin).
+	"self height: (top - aMargin)."
+	self fitChildren.
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #CAOverlay,
-	#superclass : #Morph,
+	#superclass : #CAOverlayItem,
 	#instVars : [
 		'game'
 	],
@@ -25,17 +25,27 @@ CAOverlay >> game: aCAGame [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 16:08'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:27'
 }
 CAOverlay >> initialize [
+	| lastHeight menus|
 	super initialize.
-	"self color: Color black."
 	self color: Color transparent.
-	self extent: 300@600.
-
-	self addMorph: [|c| c:= CAOverlayPlayMenu new. c initialize. c ] value.
-	self addMorph: [|c| c:= CAOverlayBlockMenu new. c initialize. c y: 170. c ] value.
-	self addMorph: [|c| c:= CAOverlayBrushMenu new. c initialize. c y: 920. c ] value.
+	
+	menus := OrderedCollection new.
+	menus add: CAOverlayPlayMenu new.
+	menus add: CAOverlayBlockMenu new.
+	menus add: CAOverlayBrushMenu new.
+	
+	lastHeight := 0. 
+	menus do: [:m | 
+		m y: lastHeight.
+		m fitChildren; padding: (Rectangle origin: 10@10 corner: 10@30).
+		lastHeight := lastHeight + m height.
+	self addMorph: m].
+	self fitChildren.
+	self padding: (Rectangle origin: 10@10 corner: 10@10).
+	self color: Color gray.
 	
 
 ]

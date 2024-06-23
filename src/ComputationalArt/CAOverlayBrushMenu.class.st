@@ -1,25 +1,19 @@
 Class {
 	#name : #CAOverlayBrushMenu,
-	#superclass : #Morph,
-	#instVars : [
-		'currentlySelectedBlock'
-	],
+	#superclass : #CAOverlayItem,
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:31'
+	#'squeak_changestamp' : 'JAL 6/23/2024 15:03'
 }
 CAOverlayBrushMenu >> initialize [
 	| brushList |
 	
 	super initialize.
-	"self color: Color black."
-	self color: Color transparent.
-	self extent: 300@500.
 	
-	self addMorph: [|s| s := (CAOverlayItem new) initialize. s contents: 'Brush Size'. s] value.
+	self addMorph: [|s| s := (CAOverlayListItem new) initialize. s contents: 'Brush Size'. s] value.
 	
 	brushList := CAOverlayList new fromListOfStrings: #('1x1' '3x3' '5x5' '9x9' '15x15').
 	brushList horizontalWithMargin: 10.
