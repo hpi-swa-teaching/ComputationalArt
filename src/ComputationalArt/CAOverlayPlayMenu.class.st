@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 15:03'
+	#'squeak_changestamp' : 'Sars 6/23/2024 16:34'
 }
 CAOverlayPlayMenu >> initialize [
 	| pauseList |
@@ -21,7 +21,7 @@ CAOverlayPlayMenu >> initialize [
 		item contents = '=' ifTrue: [item contents: '>'. self owner game toggleRunning.]].
 		item contents = '+1' ifTrue: [self owner game skipAhead: 1.].
 		item contents = '+10' ifTrue: [self owner game skipAhead: 10.].
-		item contents = 'clear' ifTrue: [CAGrid clear: (self owner game).].
+		item contents = 'clear' ifTrue: [self owner game clear.].
 	].
 	self addMorph: pauseList.
 	pauseList y: 70.
