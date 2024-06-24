@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleGasDisappearEX,
+	#name : #CARuleGasDisappear,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/12/2024 21:33'
 }
-CARuleGasDisappearEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleGasDisappear >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me gasBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	chance := (1 to: 100) atRandom.

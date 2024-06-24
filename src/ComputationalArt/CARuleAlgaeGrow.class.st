@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleAlgaeGrowEX,
+	#name : #CARuleAlgaeGrow,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/12/2024 13:31'
 }
-CARuleAlgaeGrowEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
+CARuleAlgaeGrow >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     |me algaeCount chance tempCell|
 
     me := neighborMatrix at: 2 at: 2.

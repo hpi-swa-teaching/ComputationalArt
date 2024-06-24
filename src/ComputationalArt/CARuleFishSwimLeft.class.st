@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleFishSwimLeftEX,
+	#name : #CARuleFishSwimLeft,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 6/14/2024 12:14'
 }
-CARuleFishSwimLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleFishSwimLeft >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe leftMe futureLeftMe swimmingBlocks swimThroughBlocks eatBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	rightMe := neighborMatrix at: 2 at: 3.
