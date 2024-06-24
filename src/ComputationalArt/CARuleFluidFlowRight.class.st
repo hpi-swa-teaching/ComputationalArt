@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleFluidFlowRightEX,
+	#name : #CARuleFluidFlowRight,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/12/2024 22:02'
 }
-CARuleFluidFlowRightEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleFluidFlowRight >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe belowMe leftMe futureLeftMe solidBlocks flowingBlocks flowThroughBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	rightMe := neighborMatrix at: 2 at: 3.

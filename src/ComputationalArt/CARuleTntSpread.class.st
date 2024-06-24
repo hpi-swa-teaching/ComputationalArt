@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleTntSpreadEX,
+	#name : #CARuleTntSpread,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/14/2024 17:14'
 }
-CARuleTntSpreadEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleTntSpread >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me tntCount chance tempCell poofBlocks |
 	me := neighborMatrix at: 2 at: 2.
 	chance := (1 to: 100) atRandom.

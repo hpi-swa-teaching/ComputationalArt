@@ -1,33 +1,27 @@
 Class {
-	#name : #CARuleFluidFlowLeftEX,
+	#name : #CARuleGasFlowLeft,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 22:02'
+	#'squeak_changestamp' : 'Sars 6/12/2024 21:17'
 }
-CARuleFluidFlowLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
-	| me rightMe belowRightMe leftMe futureLeftMe solidBlocks flowingBlocks flowThroughBlocks chance |
+CARuleGasFlowLeft >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+	| me rightMe belowRightMe leftMe futureLeftMe flowingBlocks flowThroughBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	rightMe := neighborMatrix at: 2 at: 3.
 	leftMe := neighborMatrix at: 2 at: 1.
 	belowRightMe := neighborMatrix at: 3 at: 3.
 	futureLeftMe := newNeighborMatrix at: 2 at: 1.
 	chance := (1 to: 100) atRandom.
-	solidBlocks := OrderedCollection new add: CABlocks sand;
-				 add: CABlocks water;
-				add: CABlocks wood;
-				 yourself.
-	flowingBlocks := OrderedCollection new add: CABlocks water;
+	flowingBlocks := OrderedCollection new add: CABlocks smoke;
 				 yourself.
 	flowThroughBlocks := OrderedCollection new add: CABlocks air;
-				 add: CABlocks smoke;
 				 yourself.
-	((((flowingBlocks includes: rightMe)
-			and: (solidBlocks includes: belowRightMe))
-			and: (flowThroughBlocks includes: me))
+	((flowingBlocks includes: rightMe)
+			and: (flowThroughBlocks includes: me)
 			and: chance < 20)
 		ifTrue: [^ rightMe].
 	((flowThroughBlocks includes: leftMe)

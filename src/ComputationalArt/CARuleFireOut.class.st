@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleFireOutEX,
+	#name : #CARuleFireOut,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/12/2024 22:04'
 }
-CARuleFireOutEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleFireOut >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me waterCount woodCount chance tempCell |
 	me := neighborMatrix at: 2 at: 2.
 	chance := (1 to: 100) atRandom.

@@ -100,7 +100,7 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/23/2024 16:40'
+	#'squeak_changestamp' : 'Sars 6/24/2024 10:53'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop ui |
@@ -109,26 +109,26 @@ CAGame >> start [
 	brushSize := 1.
 	ruler := CARuler new.
 	activeCellType := CABlocks tnt.
-	ruleSet := OrderedCollection new add: CARuleFallDownEX new;
-				 add: CARuleSinkEX new;
-				 add: CARuleFluidFlowLeftEX new;
-				 add: CARuleFluidFlowRightEX new;
-				 add: CARulePyramidLeftEX new;
-				 add: CARulePyramidRightEX new;
-				 add: CARuleAlgaeDieEX new;
-				 add: CARuleAlgaeGrowEX new;
-				 add: CARuleRiseEX new;
-				 add: CARuleGasFlowLeftEX new;
-				 add: CARuleGasFlowRightEX new;
-				 add: CARuleGasDisappearEX new;
-				 add: CARuleFireOutEX new;
-				 add: CARuleBurnEX new;
-				 add: CARuleFishSwimLeftEX new;
-				 add: CARuleFishSwimRightEX new;
-				 add: CARuleFishSwimUpEX new;
-				 add: CARuleFishSwimDownEX new;
-				 add: CARuleFishDieEX new;
-				 add: CARuleTntSpreadEX new;
+	ruleSet := OrderedCollection new add: CARuleFallDown new;
+				 add: CARuleSink new;
+				 add: CARuleFluidFlowLeft new;
+				 add: CARuleFluidFlowRight new;
+				 add: CARulePyramidLeft new;
+				 add: CARulePyramidRight new;
+				 add: CARuleAlgaeDie new;
+				 add: CARuleAlgaeGrow new;
+				 add: CARuleRise new;
+				 add: CARuleGasFlowLeft new;
+				 add: CARuleGasFlowRight new;
+				 add: CARuleGasDisappear new;
+				 add: CARuleFireOut new;
+				 add: CARuleBurn new;
+				 add: CARuleFishSwimLeft new;
+				 add: CARuleFishSwimRight new;
+				 add: CARuleFishSwimUp new;
+				 add: CARuleFishSwimDown new;
+				 add: CARuleFishDie new;
+				 add: CARuleTntSpread new;
 				 yourself.
 	grid := CAGrid new.
 	CAGrid fill: grid.

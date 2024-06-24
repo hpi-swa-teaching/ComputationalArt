@@ -1,5 +1,5 @@
 Class {
-	#name : #CARulePyramidLeftEX,
+	#name : #CARulePyramidLeft,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/16/2024 20:54'
 }
-CARulePyramidLeftEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARulePyramidLeft >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe belowMe leftMe belowLeftMe futureLeftMe aboveRightMe futureAboveRightMe pyramidBlocks lightBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	rightMe := neighborMatrix at: 2 at: 3.

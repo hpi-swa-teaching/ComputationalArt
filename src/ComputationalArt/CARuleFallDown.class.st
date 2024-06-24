@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleFallDownEX,
+	#name : #CARuleFallDown,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 6/14/2024 11:44'
 }
-CARuleFallDownEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleFallDown >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| aboveMe me belowMe fallingBlocks fallingThroughBlocks |
 	aboveMe := neighborMatrix at: 1 at: 2.
 	me := neighborMatrix at: 2 at: 2.

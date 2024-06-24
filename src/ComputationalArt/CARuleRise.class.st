@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleRiseEX,
+	#name : #CARuleRise,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Sars 6/16/2024 20:55'
 }
-CARuleRiseEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleRise >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| aboveMe me belowMe risingBlocks |
 	aboveMe := neighborMatrix at: 1 at: 2.
 	me := neighborMatrix at: 2 at: 2.

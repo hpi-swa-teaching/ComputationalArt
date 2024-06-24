@@ -1,5 +1,5 @@
 Class {
-	#name : #CARuleFishDieEX,
+	#name : #CARuleFishDie,
 	#superclass : #CARule,
 	#category : #ComputationalArt
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'HaMa 6/14/2024 11:54'
 }
-CARuleFishDieEX >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
+CARuleFishDie >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me belowMe aboveMe rightMe leftMe futureAboveMe swimmingBlocks swimThroughBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
 	belowMe := neighborMatrix at: 3 at: 2.
