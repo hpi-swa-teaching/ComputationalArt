@@ -35,11 +35,30 @@ CACellMorph >> handlesMouseDown: anEvent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:24'
+	#'squeak_changestamp' : 'Sars 7/3/2024 16:03'
+}
+CACellMorph >> handlesMouseOver: anEvent [ 
+	^ true
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/3/2024 15:58'
 }
 CACellMorph >> mouseDown: anEvent [ 
 	anEvent redButtonPressed
 		ifTrue: [game putCellAtRow: row andCol: col]
+		ifFalse: [game toggleBrushActive]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/3/2024 16:02'
+}
+CACellMorph >> mouseEnter: anEvent [ 
+	game brushActive
+		ifTrue: [game putCellAtRow: row andCol: col]
+		
 ]
 
 {

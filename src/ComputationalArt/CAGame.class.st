@@ -10,7 +10,8 @@ Class {
 		'frameDelay',
 		'isRunning',
 		'activeCellType',
-		'brushSize'
+		'brushSize',
+		'brushActive'
 	],
 	#classInstVars : [
 		'display'
@@ -24,6 +25,14 @@ Class {
 }
 CAGame >> activeCellType [
 	^activeCellType
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/3/2024 16:02'
+}
+CAGame >> brushActive [
+	^ brushActive
 ]
 
 {
@@ -100,13 +109,14 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/24/2024 10:53'
+	#'squeak_changestamp' : 'Sars 7/3/2024 15:48'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop ui |
 	isRunning := true.
 	frameDelay := 0.2.
 	brushSize := 1.
+	brushActive := false.
 	ruler := CARuler new.
 	activeCellType := CABlocks tnt.
 	ruleSet := OrderedCollection new add: CARuleFallDown new;
@@ -152,6 +162,15 @@ CAGame >> start [
 							iterationCount := iterationCount + 1]].
 			Transcript show: 'Game loop terminated after ' , maxIterations printString , ' iterations.';
 				 cr] fork
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/3/2024 15:52'
+}
+CAGame >> toggleBrushActive [
+	brushActive := brushActive not.
+	Transcript show:'tog'; cr.
 ]
 
 {
