@@ -9,34 +9,30 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#'squeak_changestamp' : 'Sars 7/3/2024 17:25'
 }
-CARuler >> applyRules: aRuleSet to: aGrid [
-    
-    | newGrid currGrid numRows numCols cellNeighbors newCellNeighbors newCellVal|
-	
-    numRows := aGrid numRows.
-    numCols := aGrid numCols.
-
-    currGrid := aGrid deepcopy.
-    newGrid := aGrid.
-
-    aRuleSet do: [ :rule |
-	  currGrid := newGrid deepcopy.
-	 
-        1 to: numRows do: [ :rowIndex |
-            1 to: numCols do: [ :colIndex |
-	           cellNeighbors := currGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
-		     newCellNeighbors := newGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
-	           newCellVal := rule applyRuleWith: cellNeighbors and: newCellNeighbors.
-                 newGrid putCell: newCellVal atRow: rowIndex andCol: colIndex.
-            ].
-        ].  
-    ].
-    
-    ^newGrid.
-	
-    
+CARuler >> applyRules: aRuleSet to: aGrid [ 
+	| newGrid currGrid numRows numCols cellNeighbors newCellNeighbors newCellVal |
+	numRows := aGrid numRows.
+	numCols := aGrid numCols.
+	currGrid := aGrid deepcopy.
+	newGrid := aGrid.
+	aRuleSet
+		do: [:rule | 
+			currGrid := newGrid deepcopy.
+			1
+				to: numRows
+				do: [:rowIndex | 1
+						to: numCols
+						do: [:colIndex | 
+							cellNeighbors := currGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
+							newCellNeighbors := newGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
+							newCellVal := rule applyRuleWith: cellNeighbors and: newCellNeighbors.
+							newGrid
+								putCell: newCellVal
+								atRow: rowIndex
+								andCol: colIndex]]].
+	^ newGrid
 ]
 
 {

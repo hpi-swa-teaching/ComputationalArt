@@ -109,12 +109,12 @@ CAGame >> skipAhead: stepCount [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 15:48'
+	#'squeak_changestamp' : 'Sars 7/3/2024 17:34'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop ui |
 	isRunning := true.
-	frameDelay := 0.2.
+	frameDelay := 0.05.
 	brushSize := 1.
 	brushActive := false.
 	ruler := CARuler new.
@@ -139,6 +139,7 @@ CAGame >> start [
 				 add: CARuleFishSwimDown new;
 				 add: CARuleFishDie new;
 				 add: CARuleTntSpread new;
+				 add: CARuleStonerLife new;
 				 yourself.
 	grid := CAGrid new.
 	CAGrid fill: grid.
@@ -152,12 +153,12 @@ CAGame >> start [
 	cellViewMorph addMorph: ui.
 	cellViewMorph position: 750 @ 250.
 	screen step.
-	maxIterations := 200.
+	maxIterations := 50.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [(Delay forSeconds: frameDelay) wait.
 					isRunning
-						ifTrue: [grid := ruler applyRules: ruleSet to: grid.
+						ifTrue: [ruler applyRules: ruleSet to: grid.
 							screen step.
 							iterationCount := iterationCount + 1]].
 			Transcript show: 'Game loop terminated after ' , maxIterations printString , ' iterations.';
