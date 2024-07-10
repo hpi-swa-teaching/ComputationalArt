@@ -31,10 +31,9 @@ CARulesTest >> tearDown [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/24/2024 11:24'
+	#'squeak_changestamp' : 'Sars 7/10/2024 16:37'
 }
 CARulesTest >> testRuleFallDown [
-	| newGrid |
 	ruleSet add: CARuleFallDown new.
 	grid
 		putCell: CABlocks water
@@ -52,53 +51,61 @@ CARulesTest >> testRuleFallDown [
 		putCell: CABlocks fish
 		atRow: 10
 		andCol: 40.
-	newGrid := ruler applyRules: ruleSet to: grid.
-	self assert: (newGrid getCellAtRow: 10 andCol: 10)
-			equals: CABlocks air.
-	self assert: (newGrid getCellAtRow: 10 andCol: 20)
-			equals: CABlocks air.
-	self assert: (newGrid getCellAtRow: 10 andCol: 30)
-			equals: CABlocks air.
-	self assert: (newGrid getCellAtRow: 10 andCol: 40)
-			equals: CABlocks air.
-	self assert: (newGrid getCellAtRow: 11 andCol: 10)
-			equals: CABlocks water.
-	self assert: (newGrid getCellAtRow: 11 andCol: 20)
-			equals: CABlocks algae.
-	self assert: (newGrid getCellAtRow: 11 andCol: 30)
-			equals: CABlocks fire.
-	self assert: (newGrid getCellAtRow: 11 andCol: 40)
-			equals: CABlocks fish.
+	ruler applyRules: ruleSet to: grid.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 10)
+		equals: CABlocks air.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 20)
+		equals: CABlocks air.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 30)
+		equals: CABlocks air.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 40)
+		equals: CABlocks air.
+	self
+		assert: (grid getCellAtRow: 11 andCol: 10)
+		equals: CABlocks water.
+	self
+		assert: (grid getCellAtRow: 11 andCol: 20)
+		equals: CABlocks algae.
+	self
+		assert: (grid getCellAtRow: 11 andCol: 30)
+		equals: CABlocks fire.
+	self
+		assert: (grid getCellAtRow: 11 andCol: 40)
+		equals: CABlocks fish.
 	ruleSet removeAll.
 	CAGrid clear: grid
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/24/2024 11:23'
+	#'squeak_changestamp' : 'Sars 7/10/2024 16:34'
 }
 CARulesTest >> testRuleRise [
-	| newGrid |
 	ruleSet add: CARuleRise new.
 	grid
 		putCell: CABlocks smoke
 		atRow: 10
 		andCol: 10.
-	newGrid := ruler applyRules: ruleSet to: grid.
-	self assert: (newGrid getCellAtRow: 10 andCol: 10)
-			equals: CABlocks air.
-	self assert: (newGrid getCellAtRow: 9 andCol: 10)
-			equals: CABlocks smoke.
+	ruler applyRules: ruleSet to: grid.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 10)
+		equals: CABlocks air.
+	self
+		assert: (grid getCellAtRow: 9 andCol: 10)
+		equals: CABlocks smoke.
 	ruleSet removeAll.
 	CAGrid clear: grid
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/24/2024 11:23'
+	#'squeak_changestamp' : 'Sars 7/10/2024 16:33'
 }
 CARulesTest >> testRuleSink [
-	| newGrid |
 	ruleSet add: CARuleSink new.
 	grid
 		putCell: CABlocks sand
@@ -116,15 +123,19 @@ CARulesTest >> testRuleSink [
 		putCell: CABlocks water
 		atRow: 11
 		andCol: 20.
-	newGrid := ruler applyRules: ruleSet to: grid.
-	self assert: (newGrid getCellAtRow: 10 andCol: 10)
-			equals: CABlocks fire.
-	self assert: (newGrid getCellAtRow: 10 andCol: 20)
-			equals: CABlocks water.
-	self assert: (newGrid getCellAtRow: 11 andCol: 10)
-			equals: CABlocks sand.
-	self assert: (newGrid getCellAtRow: 11 andCol: 20)
-			equals: CABlocks sand.
+	ruler applyRules: ruleSet to: grid.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 10)
+		equals: CABlocks fire.
+	self
+		assert: (grid getCellAtRow: 10 andCol: 20)
+		equals: CABlocks water.
+	self
+		assert: (grid getCellAtRow: 11 andCol: 10)
+		equals: CABlocks sand.
+	self
+		assert: (grid getCellAtRow: 11 andCol: 20)
+		equals: CABlocks sand.
 	ruleSet removeAll.
 	CAGrid clear: grid
 ]
