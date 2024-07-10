@@ -6,12 +6,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 22:04'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:50'
 }
 CARuleFireOut >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me waterCount woodCount chance tempCell |
 	me := neighborMatrix at: 2 at: 2.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	waterCount := 0.
 	1
 		to: 3

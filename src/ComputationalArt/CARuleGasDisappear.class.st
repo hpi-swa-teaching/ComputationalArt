@@ -6,12 +6,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 21:33'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:52'
 }
 CARuleGasDisappear >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me gasBlocks chance |
 	me := neighborMatrix at: 2 at: 2.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	gasBlocks := OrderedCollection new add: CABlocks smoke;
 				 yourself.
 	((gasBlocks includes: me)

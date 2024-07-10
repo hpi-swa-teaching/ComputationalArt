@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:54'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:53'
 }
 CARulePyramidRight >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe belowMe leftMe belowRightMe futureLeftMe aboveLeftMe futureAboveLeftMe pyramidBlocks lightBlocks chance |
@@ -18,7 +18,7 @@ CARulePyramidRight >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 	aboveLeftMe := neighborMatrix at: 1 at: 1.
 	futureLeftMe := newNeighborMatrix at: 2 at: 1.
 	futureAboveLeftMe := newNeighborMatrix at: 1 at: 1.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	pyramidBlocks := OrderedCollection new add: CABlocks sand;
 				 yourself.
 	lightBlocks := OrderedCollection new add: CABlocks air;

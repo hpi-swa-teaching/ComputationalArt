@@ -6,12 +6,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/14/2024 17:14'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:53'
 }
 CARuleTntSpread >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me tntCount chance tempCell poofBlocks |
 	me := neighborMatrix at: 2 at: 2.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	poofBlocks := OrderedCollection new add: CABlocks air;
 	add: CABlocks air;
 				 add: CABlocks smoke;

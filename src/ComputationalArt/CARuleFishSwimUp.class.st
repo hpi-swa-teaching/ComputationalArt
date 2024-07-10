@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/14/2024 12:16'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:51'
 }
 CARuleFishSwimUp >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me belowMe aboveMe futureAboveMe swimmingBlocks swimThroughBlocks eatBlocks chance |
@@ -14,7 +14,7 @@ CARuleFishSwimUp >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 	belowMe := neighborMatrix at: 3 at: 2.
 	aboveMe := neighborMatrix at: 1 at: 2.
 	futureAboveMe := newNeighborMatrix at: 1 at: 2.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	swimmingBlocks := OrderedCollection new add: CABlocks fish;
 				 yourself.
 	swimThroughBlocks := OrderedCollection new add: CABlocks water;

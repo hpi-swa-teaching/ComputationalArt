@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 21:23'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:52'
 }
 CARuleGasFlowRight >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me rightMe belowMe leftMe futureLeftMe flowingBlocks flowThroughBlocks chance |
@@ -15,7 +15,7 @@ CARuleGasFlowRight >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
 	leftMe := neighborMatrix at: 2 at: 1.
 	belowMe := neighborMatrix at: 3 at: 2.
 	futureLeftMe := newNeighborMatrix at: 2 at: 1.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	flowingBlocks := OrderedCollection new add: CABlocks smoke;
 				 yourself.
 	flowThroughBlocks := OrderedCollection new add: CABlocks air;
