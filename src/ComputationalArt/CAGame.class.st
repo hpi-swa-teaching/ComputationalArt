@@ -99,28 +99,28 @@ CAGame >> setActiveCellTypeTo: cellType [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:50'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:42'
 }
 CAGame >> skipAhead: stepCount [ 
 
-	stepCount timesRepeat: [grid := ruler applyRules: ruleSet to: grid.].
+	stepCount timesRepeat: [ruler applyRules: ruleSet to: grid.].
 	screen step
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 15:48'
+	#'squeak_changestamp' : 'Sars 7/10/2024 15:46'
 }
 CAGame >> start [
 	| maxIterations iterationCount gameloop ui |
 	isRunning := true.
-	frameDelay := 0.2.
+	frameDelay := 0.01.
 	brushSize := 1.
 	brushActive := false.
 	ruler := CARuler new.
 	activeCellType := CABlocks tnt.
 	ruleSet := OrderedCollection new add: CARuleFallDown new;
-				 add: CARuleSink new;
+				add: CARuleSink new;
 				 add: CARuleFluidFlowLeft new;
 				 add: CARuleFluidFlowRight new;
 				 add: CARulePyramidLeft new;
@@ -139,6 +139,8 @@ CAGame >> start [
 				 add: CARuleFishSwimDown new;
 				 add: CARuleFishDie new;
 				 add: CARuleTntSpread new;
+				 add: CARuleStonerLife new;
+				 
 				 yourself.
 	grid := CAGrid new.
 	CAGrid fill: grid.
@@ -152,12 +154,12 @@ CAGame >> start [
 	cellViewMorph addMorph: ui.
 	cellViewMorph position: 750 @ 250.
 	screen step.
-	maxIterations := 200.
+	maxIterations := 100.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [(Delay forSeconds: frameDelay) wait.
 					isRunning
-						ifTrue: [grid := ruler applyRules: ruleSet to: grid.
+						ifTrue: [ruler applyRules: ruleSet to: grid.
 							screen step.
 							iterationCount := iterationCount + 1]].
 			Transcript show: 'Game loop terminated after ' , maxIterations printString , ' iterations.';

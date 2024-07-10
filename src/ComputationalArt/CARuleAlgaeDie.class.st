@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 13:32'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:49'
 }
 CARuleAlgaeDie >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     |me waterCount chance tempCell|
@@ -14,7 +14,7 @@ CARuleAlgaeDie >> applyRuleWith: neighborMatrix and: newNeighborMatrix [
     me := neighborMatrix at: 2 at: 2.
  
 
-    chance := (1 to: 100) atRandom.
+    chance := ThreadSafeRandom value nextInt: 100.
 
     waterCount := 1.
 

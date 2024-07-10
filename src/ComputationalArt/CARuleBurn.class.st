@@ -6,12 +6,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 22:08'
+	#'squeak_changestamp' : 'Sars 7/10/2024 14:50'
 }
 CARuleBurn >> applyRuleWith: neighborMatrix and: newNeighborMatrix [ 
 	| me fireCount chance tempCell |
 	me := neighborMatrix at: 2 at: 2.
-	chance := (1 to: 100) atRandom.
+	chance := ThreadSafeRandom value nextInt: 100.
 	fireCount := 0.
 	1
 		to: 3
