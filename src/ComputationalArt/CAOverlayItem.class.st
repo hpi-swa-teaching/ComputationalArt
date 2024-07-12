@@ -5,11 +5,12 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 15:00'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:54'
 }
 CAOverlayItem >> fitChildren [
-	|originX originY cornerX cornerY|
+
+	| originX originY cornerX cornerY |
 	originX := 10000. originY := 10000. cornerX := 0. cornerY:= 0.
 	self submorphsDo: [:s | s bounds corner x < originX
 		ifTrue: [originX := s bounds origin x]].
@@ -24,7 +25,7 @@ CAOverlayItem >> fitChildren [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'initialize-release',
 	#'squeak_changestamp' : 'JAL 6/23/2024 14:13'
 }
 CAOverlayItem >> initialize [
@@ -34,10 +35,11 @@ CAOverlayItem >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 15:17'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:54'
 }
 CAOverlayItem >> padding: aRectangle [
+
 	self extent: (self extent + aRectangle origin + aRectangle corner).
 	self submorphsDo: [:s | s position: (s position + aRectangle origin)]
 ]

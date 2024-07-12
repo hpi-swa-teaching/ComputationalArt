@@ -17,26 +17,29 @@ CAOverlay class >> uiPosition [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 15:16'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:54'
 }
 CAOverlay >> game [
+
 	^ game.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/19/2024 15:13'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:54'
 }
 CAOverlay >> game: aCAGame [
+
 	game := aCAGame.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 17:19'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:54'
 }
 CAOverlay >> initialize [
+
 	| lastHeight menus |
 	super initialize.
 	menus := OrderedCollection new.

@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/10/2024 14:41'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARuler >> applyRules: aRuleSet to: aGrid [ 
 	| aGridCopy cellNeighbors newCellNeighbors newCellVal |
@@ -18,8 +18,8 @@ CARuler >> applyRules: aRuleSet to: aGrid [
 		aGridCopy := aGrid deepcopy.
 		1 to: aGrid numRows do: [:rowIndex | 
 			1 to: aGrid numCols do: [:colIndex | 
-				cellNeighbors := aGridCopy getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
-				newCellNeighbors := aGrid getNeighborsOfCellAtRow: rowIndex andCol: colIndex.
+				cellNeighbors := aGridCopy neighborsOfCellAtRow: rowIndex andCol: colIndex.
+				newCellNeighbors := aGrid neighborsOfCellAtRow: rowIndex andCol: colIndex.
 				newCellVal := rule applyRuleWith: cellNeighbors and: newCellNeighbors.
 				aGrid putCell: newCellVal atRow: rowIndex andCol: colIndex
 			]
@@ -29,7 +29,7 @@ CARuler >> applyRules: aRuleSet to: aGrid [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARuler >> printGrid: aGrid [
     
@@ -40,7 +40,7 @@ CARuler >> printGrid: aGrid [
 
     1 to: numRows do: [:i |
         1 to: numCols do: [:j |
-            Transcript show: (aGrid getCellAtRow: i andCol: j) printString; space.
+            Transcript show: (aGrid cellAtRow: i andCol: j) printString; space.
         ].
         Transcript cr.
     ].

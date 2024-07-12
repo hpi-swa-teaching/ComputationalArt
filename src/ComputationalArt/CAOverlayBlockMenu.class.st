@@ -5,15 +5,16 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 17:30'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:55'
 }
 CAOverlayBlockMenu >> initialize [
-	| blockList |
-	
+
+	| blockList s|
 	super initialize.
-	
-	self addMorph: [|s| s := (CAOverlayListItem new) initialize. s contents: 'BlockMenu'. s] value.
+	self addMorph: 
+		[s := (CAOverlayListItem new) initialize. 
+		 s contents: 'BlockMenu'. s] value.
 	
 	blockList := CAOverlayList new fromListOfStrings: 
 	#('Water' 'Sand' 'Stone' 'Air' 'TNT' 'Wood' 'Algae' 'Fire' 'Fish' 'Smoke').

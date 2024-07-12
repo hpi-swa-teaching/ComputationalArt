@@ -65,141 +65,137 @@ CAGrid class >> fillTNT: aGrid [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 13:38'
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:51'
+}
+CAGrid class >> size [
+	"I return the num of rows and cols"
+	
+	^ 100.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
+}
+CAGrid >> cellAtRow: aRow andCol: aCol [
+
+	^ grid at: aRow at: aCol.
+]
+
+{
+	#category : #copy,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGrid >> deepcopy [
-	|clone|
+
+	| clone |
 	clone := CAGrid new.
 	
       1 to: numRows do: [:rowIndex |
-       	1 to: numCols do: [: colIndex|
-            	"grid at: rowIndex at: colIndex put: 10 * rowIndex + colIndex."
-			clone putCell: (grid at: rowIndex at: colIndex) atRow: rowIndex andCol: colIndex.
-        	].
-    	].
-	^ clone
+       	1 to: numCols do: [:colIndex |
+            	clone putCell: (grid at: rowIndex at: colIndex) atRow: rowIndex andCol: colIndex.]].
+	^ clone.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/29/2024 23:51'
-}
-CAGrid >> getCellAtRow: row andCol: col [
-
-	^grid at: row at: col
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 13:43'
-}
-CAGrid >> getNeighborsOfCellAtRow: row andCol: col [
-	"get the 3x3 of cells surrounding a certain input"
-	|neighborMatrix temp gridRow gridCol|
-	neighborMatrix := Matrix rows: 3 columns: 3.
-	
-	1 to: 3 do: [:i |
-       	1 to: 3 do: [:j |
-            	neighborMatrix at: i at: j put: 0.
-        	].
-    	].
-
-	(col=1) ifTrue: [
-		neighborMatrix 
-			at: 1 at: 1 put: -1;
-			at: 2 at: 1 put: -1;
-			at: 3 at: 1 put: -1.
-	].
-
-	(row=1) ifTrue: [
-		neighborMatrix 
-			at: 1 at: 1 put: -1;
-			at: 1 at: 2 put: -1;
-			at: 1 at: 3 put: -1.
-	].
-
-	(row=numRows) ifTrue: [
-		neighborMatrix 
-			at: 3 at: 1 put: -1;
-			at: 3 at: 2 put: -1;
-		 	at: 3 at: 3 put: -1.
-	].
-
-	(col=numCols) ifTrue: [
-		neighborMatrix 
-			at: 1 at: 3 put: -1;
-			at: 2 at: 3 put: -1;
-			at: 3 at: 3 put: -1.
-	].
-	
-	1 to: 3 do: [:rowOffset |
-    		1 to: 3 do: [:colOffset |
-			temp := neighborMatrix at: rowOffset at: colOffset.
-       		(temp == 0) ifTrue: [
-				gridRow := row+rowOffset-2.
-				gridCol := col+colOffset-2.
-				temp := grid at: gridRow at: gridCol.
-				neighborMatrix at: rowOffset at: colOffset put: temp.
-			].
-    		].
-	].
- 
-	^neighborMatrix
-		
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGrid >> grid [
 
-	^grid
+	^ grid.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 15:51'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:51'
 }
 CAGrid >> initialize [
 
-    numCols := 100.
-    numRows := 100.
+    numCols := CAGrid size.
+    numRows := CAGrid size.
     
     grid := Matrix rows: numRows columns: numCols.
     
     1 to: numRows do: [:rowIndex |
         1 to: numCols do: [:colIndex |
-            grid at: rowIndex at: colIndex put: 0.
-           
-        ].
-    ].
+            grid at: rowIndex at: colIndex put: 0.]].
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:44'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
+}
+CAGrid >> neighborsOfCellAtRow: aRow andCol: aCol [
+
+	| neighborMatrix temp gridRow gridCol |
+	neighborMatrix := Matrix rows: 3 columns: 3.
+	
+	1 to: 3 do: [:row |
+       	1 to: 3 do: [:col |
+            	neighborMatrix at: row at: col put: 0.]].
+
+	aCol=1 ifTrue: [
+		neighborMatrix 
+			at: 1 at: 1 put: -1;
+			at: 2 at: 1 put: -1;
+			at: 3 at: 1 put: -1.].
+
+	aRow=1 ifTrue: [
+		neighborMatrix 
+			at: 1 at: 1 put: -1;
+			at: 1 at: 2 put: -1;
+			at: 1 at: 3 put: -1.].
+
+	aRow=numRows ifTrue: [
+		neighborMatrix 
+			at: 3 at: 1 put: -1;
+			at: 3 at: 2 put: -1;
+		 	at: 3 at: 3 put: -1.].
+
+	aCol=numCols ifTrue: [
+		neighborMatrix 
+			at: 1 at: 3 put: -1;
+			at: 2 at: 3 put: -1;
+			at: 3 at: 3 put: -1.].
+	
+	1 to: 3 do: [:rowOffset |
+    		1 to: 3 do: [:colOffset |
+			temp := neighborMatrix at: rowOffset at: colOffset.
+       		(temp = 0) ifTrue: [
+				gridRow := aRow+rowOffset-2.
+				gridCol := aCol+colOffset-2.
+				temp := grid at: gridRow at: gridCol.
+				neighborMatrix at: rowOffset at: colOffset put: temp.]]].
+ 
+	^ neighborMatrix.
+		
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:51'
 }
 CAGrid >> numCols [
 
-	^numCols
+	^ numCols.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:51'
 }
 CAGrid >> numRows [
 
-	^numRows
+	^ numRows.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 5/30/2024 12:04'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:52'
 }
-CAGrid >> putCell: cell atRow: row andCol: col [
+CAGrid >> putCell: aCell atRow: aRow andCol: aCol [
 
-	grid at: row at: col put: cell.
+	grid at: aRow at: aCol put: aCell.
 ]

@@ -36,7 +36,7 @@ CAGridTest >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:55'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testClear [
 
@@ -50,12 +50,12 @@ CAGridTest >> testClear [
 		do: [:rowIndex | 1
 				to: numCols
 				do: [:colIndex | 
-					self assert: CABlocks air equals: (grid getCellAtRow: rowIndex andCol: colIndex).]].
+					self assert: CABlocks air equals: (grid cellAtRow: rowIndex andCol: colIndex).]].
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:55'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testDeepCopy [
 
@@ -69,17 +69,17 @@ CAGridTest >> testDeepCopy [
 			1 to: numCols
 				do: [:colIndex | 
 					self assert: 
-					(copiedGrid getCellAtRow: rowIndex andCol: colIndex) 
+					(copiedGrid cellAtRow: rowIndex andCol: colIndex) 
 					equals: 
-					(grid getCellAtRow: rowIndex andCol: colIndex).]].
+					(grid cellAtRow: rowIndex andCol: colIndex).]].
 	copiedGrid putCell:-1 atRow: 1 andCol: 1.
-	self assert: -1 < (grid getCellAtRow: 1 andCol: 1).
+	self assert: -1 < (grid cellAtRow: 1 andCol: 1).
 	CAGrid clear: grid.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:55'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testFillEmptyFail [
 
@@ -91,13 +91,13 @@ CAGridTest >> testFillEmptyFail [
 		do: [:rowIndex | 
 			1 to: numCols
 				do: [:colIndex | 
-					self assert: CABlocks air equals: (grid getCellAtRow: rowIndex andCol: colIndex).]].
+					self assert: CABlocks air equals: (grid cellAtRow: rowIndex andCol: colIndex).]].
 	CAGrid clear: grid.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:55'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testFillStone [
 
@@ -109,13 +109,13 @@ CAGridTest >> testFillStone [
 		do: [:rowIndex | 
 			1 to: numCols
 				do: [:colIndex | 
-					self assert: CABlocks stone equals: (grid getCellAtRow: rowIndex andCol: colIndex).]].
+					self assert: CABlocks stone equals: (grid cellAtRow: rowIndex andCol: colIndex).]].
 	CAGrid clear: grid.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:57'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testFillTNT [
 
@@ -127,13 +127,13 @@ CAGridTest >> testFillTNT [
 		do: [:rowIndex | 
 			1 to: numCols
 				do: [:colIndex | 
-					self assert: CABlocks tnt equals: (grid getCellAtRow: rowIndex andCol: colIndex).]].
+					self assert: CABlocks tnt equals: (grid cellAtRow: rowIndex andCol: colIndex).]].
 	CAGrid clear: grid.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:57'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testGetNeighbors [
 
@@ -141,14 +141,14 @@ CAGridTest >> testGetNeighbors [
 	numCols := 3.
 	numRows := 3.
 	CAGrid clear: grid.
-	neighbors := grid getNeighborsOfCellAtRow: 2 andCol: 2.
+	neighbors := grid neighborsOfCellAtRow: 2 andCol: 2.
 	1 to: numRows
 		do: [:rowIndex | 
 			1 to: numCols
 				do: [:colIndex | 
 					self assert: CABlocks air equals: (neighbors at: rowIndex at: colIndex).]].
 	grid putCell: 1 atRow: 2 andCol: 2.
-	neighbors := grid getNeighborsOfCellAtRow: 2 andCol: 2.
+	neighbors := grid neighborsOfCellAtRow: 2 andCol: 2.
 	self assert: 1 equals: (neighbors at: 2 at: 2).
 	CAGrid clear: grid.
 ]
@@ -186,11 +186,11 @@ CAGridTest >> testNumRows [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:48'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CAGridTest >> testPutCellGetCell [
 
 	grid putCell: 1 atRow: 1 andCol: 1.
-	self assert: 1 equals: (grid getCellAtRow: 1 andCol: 1).
+	self assert: 1 equals: (grid cellAtRow: 1 andCol: 1).
 	CAGrid clear: grid.
 ]

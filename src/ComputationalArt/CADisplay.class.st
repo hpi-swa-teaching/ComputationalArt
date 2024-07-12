@@ -114,7 +114,7 @@ CADisplay >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 20:30'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CADisplay >> showGrid: aGrid [
 
@@ -132,7 +132,7 @@ CADisplay >> showGrid: aGrid [
 
 	1 to: rows do: [:rowIndex |
     		1 to:  cols do: [:colIndex |
-        		cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
+        		cell := aGrid cellAtRow: rowIndex andCol: colIndex.
         		cellMorph := Morph new
             	extent: size @ size;
             	borderColor: Color black;
@@ -145,7 +145,7 @@ CADisplay >> showGrid: aGrid [
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 20:31'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CADisplay >> step [
 	
@@ -166,7 +166,7 @@ CADisplay >> step [
 				do: [:rowIndex | 
 					(1 to: cols)
 						do: [:colIndex |
-							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
+							cell := aGrid cellAtRow: rowIndex andCol: colIndex.
 							cellMorph := CACellMorph new extent: size @ size;
 										 borderColor: Color gray;
 										 color: (blockLookup colorAt: cell);
@@ -182,7 +182,7 @@ CADisplay >> step [
 				do: [:rowIndex | 
 					(1 to: cols)
 						do: [:colIndex | 
-							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
+							cell := aGrid cellAtRow: rowIndex andCol: colIndex.
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
 							cellMorph
 								color: (blockLookup colorAt: cell).]]].

@@ -33,7 +33,7 @@ CARulesTest >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 20:00'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRuleFallDown [
 
@@ -56,28 +56,28 @@ CARulesTest >> testRuleFallDown [
 		andCol: 40.
 	ruler applyRules: ruleSet to: grid.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 10)
+		assert: (grid cellAtRow: 10 andCol: 10)
 		equals: CABlocks air.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 20)
+		assert: (grid cellAtRow: 10 andCol: 20)
 		equals: CABlocks air.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 30)
+		assert: (grid cellAtRow: 10 andCol: 30)
 		equals: CABlocks air.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 40)
+		assert: (grid cellAtRow: 10 andCol: 40)
 		equals: CABlocks air.
 	self
-		assert: (grid getCellAtRow: 11 andCol: 10)
+		assert: (grid cellAtRow: 11 andCol: 10)
 		equals: CABlocks water.
 	self
-		assert: (grid getCellAtRow: 11 andCol: 20)
+		assert: (grid cellAtRow: 11 andCol: 20)
 		equals: CABlocks algae.
 	self
-		assert: (grid getCellAtRow: 11 andCol: 30)
+		assert: (grid cellAtRow: 11 andCol: 30)
 		equals: CABlocks fire.
 	self
-		assert: (grid getCellAtRow: 11 andCol: 40)
+		assert: (grid cellAtRow: 11 andCol: 40)
 		equals: CABlocks fish.
 	ruleSet removeAll.
 	CAGrid clear: grid.
@@ -85,7 +85,7 @@ CARulesTest >> testRuleFallDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:59'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRuleRise [
 
@@ -96,10 +96,10 @@ CARulesTest >> testRuleRise [
 		andCol: 10.
 	ruler applyRules: ruleSet to: grid.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 10)
+		assert: (grid cellAtRow: 10 andCol: 10)
 		equals: CABlocks air.
 	self
-		assert: (grid getCellAtRow: 9 andCol: 10)
+		assert: (grid cellAtRow: 9 andCol: 10)
 		equals: CABlocks smoke.
 	ruleSet removeAll.
 	CAGrid clear: grid.
@@ -107,7 +107,7 @@ CARulesTest >> testRuleRise [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 23:34'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRuleSink [
 
@@ -130,16 +130,16 @@ CARulesTest >> testRuleSink [
 		andCol: 20.
 	ruler applyRules: ruleSet to: grid.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 10)
+		assert: (grid cellAtRow: 10 andCol: 10)
 		equals: CABlocks fire.
 	self
-		assert: (grid getCellAtRow: 10 andCol: 20)
+		assert: (grid cellAtRow: 10 andCol: 20)
 		equals: CABlocks water.
 	self
-		assert: (grid getCellAtRow: 11 andCol: 10)
+		assert: (grid cellAtRow: 11 andCol: 10)
 		equals: CABlocks sand.
 	self
-		assert: (grid getCellAtRow: 11 andCol: 20)
+		assert: (grid cellAtRow: 11 andCol: 20)
 		equals: CABlocks sand.
 	ruleSet removeAll.
 	CAGrid clear: grid.
@@ -147,7 +147,7 @@ CARulesTest >> testRuleSink [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/12/2024 21:24'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRulesAlgae [
 	| algaeCount waterCount airCount |
@@ -187,13 +187,13 @@ CARulesTest >> testRulesAlgae [
 		do: [:rowIndex | 1
 				to: 100
 				do: [:colIndex | 
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks air
 						ifTrue: [airCount := airCount + 1].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks water
 						ifTrue: [waterCount := waterCount + 1].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks algae
 						ifTrue: [algaeCount := algaeCount + 1]]].
 	self assert: waterCount + algaeCount equals: 6.
@@ -204,7 +204,7 @@ CARulesTest >> testRulesAlgae [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/12/2024 21:23'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRulesFish [
 	| fishCount waterCount airCount |
@@ -258,13 +258,13 @@ CARulesTest >> testRulesFish [
 		do: [:rowIndex | 1
 				to: 100
 				do: [:colIndex | 
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks air
 						ifTrue: [airCount := airCount + 1].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks water
 						ifTrue: [waterCount := waterCount + 1].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks fish
 						ifTrue: [fishCount := fishCount + 1]]].
 	self assert: waterCount equals: 8.
@@ -276,7 +276,7 @@ CARulesTest >> testRulesFish [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 20:01'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRulesFluids [
 
@@ -304,10 +304,10 @@ CARulesTest >> testRulesFluids [
 		do: [:rowIndex | 
 			1 to: 100
 				do: [:colIndex | 
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks air
 						ifTrue: [airCount := airCount + 1.].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks water
 						ifTrue: [waterCount := waterCount + 1.]]].
 	self assert: waterCount equals: 3.
@@ -317,7 +317,7 @@ CARulesTest >> testRulesFluids [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/12/2024 21:40'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRulesLife [
 	| airCount stoneCount |
@@ -351,26 +351,26 @@ CARulesTest >> testRulesLife [
 		do: [:rowIndex | 1
 				to: 100
 				do: [:colIndex | 
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks air
 						ifTrue: [airCount := airCount + 1].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks stone
 						ifTrue: [stoneCount := stoneCount + 1]]].
 	self
-		assert: (grid getCellAtRow: 20 andCol: 20)
+		assert: (grid cellAtRow: 20 andCol: 20)
 		equals: CABlocks stone.
 	self
-		assert: (grid getCellAtRow: 20 andCol: 21)
+		assert: (grid cellAtRow: 20 andCol: 21)
 		equals: CABlocks stone.
 	self
-		assert: (grid getCellAtRow: 20 andCol: 22)
+		assert: (grid cellAtRow: 20 andCol: 22)
 		equals: CABlocks stone.
 	self
-		assert: (grid getCellAtRow: 19 andCol: 22)
+		assert: (grid cellAtRow: 19 andCol: 22)
 		equals: CABlocks stone.
 	self
-		assert: (grid getCellAtRow: 18 andCol: 21)
+		assert: (grid cellAtRow: 18 andCol: 21)
 		equals: CABlocks stone.
 	self assert: stoneCount equals: 5.
 	self assert: airCount equals: 10000 - 5.
@@ -380,7 +380,7 @@ CARulesTest >> testRulesLife [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/12/2024 21:25'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:49'
 }
 CARulesTest >> testRulesSand [
 	| airCount sandCount |
@@ -408,10 +408,10 @@ CARulesTest >> testRulesSand [
 		do: [:rowIndex | 1
 				to: 100
 				do: [:colIndex | 
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks air
 						ifTrue: [airCount := airCount + 1].
-					(grid getCellAtRow: rowIndex andCol: colIndex)
+					(grid cellAtRow: rowIndex andCol: colIndex)
 							= CABlocks sand
 						ifTrue: [sandCount := sandCount + 1]]].
 	self assert: sandCount equals: 3.
