@@ -69,6 +69,33 @@ CAGame class >> initializeRuleSet [
 ]
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:41'
+}
+CAGame class >> iterationStart [
+
+	^ 0.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:42'
+}
+CAGame class >> maxIterations [
+
+	200.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:41'
+}
+CAGame class >> viewMorphPosition [
+
+	^ 750 @ 250.
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'KoPa 7/12/2024 19:07'
 }
@@ -162,7 +189,7 @@ CAGame >> skipAhead: aStepCount [
 
 {
 	#category : #'initialize-release',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 20:36'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:59'
 }
 CAGame >> start [
 
@@ -180,13 +207,14 @@ CAGame >> start [
 	screen attachedGrid: grid.
 	cellViewMorph := screen viewMorph.
 	ui := CAOverlay new.
-	ui position: 130 @ 130.
+	ui position: CAOverlay uiPosition.
 	ui game: self.
 	cellViewMorph addMorph: ui.
-	cellViewMorph position: 750 @ 250.
+	cellViewMorph position: CAGame viewMorphPosition.
 	screen step.
-	maxIterations := 100.
+	maxIterations := 200.
 	iterationCount := 0.
+	
 	gameloop := [[iterationCount < maxIterations]
 				whileTrue: [
 					(Delay forSeconds: frameDelay) wait.

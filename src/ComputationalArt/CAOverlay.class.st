@@ -8,6 +8,15 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:43'
+}
+CAOverlay class >> uiPosition [
+
+	^ 130 @ 130.
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JAL 6/19/2024 15:16'
 }
