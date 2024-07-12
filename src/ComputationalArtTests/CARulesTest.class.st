@@ -10,30 +10,33 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/23/2024 17:33'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:59'
 }
 CARulesTest >> setUp [
+
 	grid := CAGrid new.
 	ruler := CARuler new.
 	ruleSet := OrderedCollection new.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/24/2024 10:49'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:59'
 }
 CARulesTest >> tearDown [
+
 	grid := nil.
 	ruler := nil.
-	ruleSet := nil
+	ruleSet := nil.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/10/2024 16:37'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:00'
 }
 CARulesTest >> testRuleFallDown [
+
 	ruleSet add: CARuleFallDown new.
 	grid
 		putCell: CABlocks water
@@ -77,14 +80,15 @@ CARulesTest >> testRuleFallDown [
 		assert: (grid getCellAtRow: 11 andCol: 40)
 		equals: CABlocks fish.
 	ruleSet removeAll.
-	CAGrid clear: grid
+	CAGrid clear: grid.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/10/2024 16:34'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:59'
 }
 CARulesTest >> testRuleRise [
+
 	ruleSet add: CARuleRise new.
 	grid
 		putCell: CABlocks smoke
@@ -98,14 +102,15 @@ CARulesTest >> testRuleRise [
 		assert: (grid getCellAtRow: 9 andCol: 10)
 		equals: CABlocks smoke.
 	ruleSet removeAll.
-	CAGrid clear: grid
+	CAGrid clear: grid.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/12/2024 20:41'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 23:34'
 }
 CARulesTest >> testRuleSink [
+
 	ruleSet add: CARuleSink new.
 	grid
 		putCell: CABlocks sand
@@ -137,7 +142,7 @@ CARulesTest >> testRuleSink [
 		assert: (grid getCellAtRow: 11 andCol: 20)
 		equals: CABlocks sand.
 	ruleSet removeAll.
-	CAGrid clear: grid
+	CAGrid clear: grid.
 ]
 
 {
@@ -270,11 +275,12 @@ CARulesTest >> testRulesFish [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/12/2024 21:23'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:01'
 }
 CARulesTest >> testRulesFluids [
-	| airCount waterCount |
+
+	| newGrid airCount waterCount |
 	airCount := 0.
 	waterCount := 0.
 	ruleSet add: CARuleFluidFlowLeft new;
@@ -293,23 +299,20 @@ CARulesTest >> testRulesFluids [
 		putCell: CABlocks water
 		atRow: 10
 		andCol: 30.
-	10
-		timesRepeat: [ruler applyRules: ruleSet to: grid].
-	1
-		to: 100
-		do: [:rowIndex | 1
-				to: 100
+	10 timesRepeat: [newGrid := ruler applyRules: ruleSet to: grid.].
+	1 to: 100
+		do: [:rowIndex | 
+			1 to: 100
 				do: [:colIndex | 
 					(grid getCellAtRow: rowIndex andCol: colIndex)
 							= CABlocks air
-						ifTrue: [airCount := airCount + 1].
+						ifTrue: [airCount := airCount + 1.].
 					(grid getCellAtRow: rowIndex andCol: colIndex)
 							= CABlocks water
-						ifTrue: [waterCount := waterCount + 1]]].
+						ifTrue: [waterCount := waterCount + 1.]]].
 	self assert: waterCount equals: 3.
-	self assert: airCount equals: 10000 - 3.
-	ruleSet removeAll.
-	CAGrid clear: grid
+	self assert: airCount equals: (10000 - 3). ruleSet removeAll.
+	CAGrid clear: grid.
 ]
 
 {
