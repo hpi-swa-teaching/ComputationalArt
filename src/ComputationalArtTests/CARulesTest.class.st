@@ -103,23 +103,23 @@ CARulesTest >> testRuleRise [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/10/2024 16:33'
+	#'squeak_changestamp' : 'Sars 7/12/2024 20:41'
 }
 CARulesTest >> testRuleSink [
 	ruleSet add: CARuleSink new.
 	grid
 		putCell: CABlocks sand
 		atRow: 10
-		andCol: 10.
-	grid
+		andCol: 10;
+		
 		putCell: CABlocks sand
 		atRow: 10
-		andCol: 20.
-	grid
+		andCol: 20;
+		
 		putCell: CABlocks fire
 		atRow: 11
-		andCol: 10.
-	grid
+		andCol: 10;
+		
 		putCell: CABlocks water
 		atRow: 11
 		andCol: 20.
@@ -142,10 +142,139 @@ CARulesTest >> testRuleSink [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/24/2024 11:25'
+	#'squeak_changestamp' : 'Sars 7/12/2024 21:24'
+}
+CARulesTest >> testRulesAlgae [
+	| algaeCount waterCount airCount |
+	airCount := 0.
+	algaeCount := 0.
+	waterCount := 0.
+	ruleSet add: CARuleAlgaeDie new;
+		 add: CARuleAlgaeGrow new.
+	grid
+		putCell: CABlocks water
+		atRow: 10
+		andCol: 10;
+		
+		putCell: CABlocks algae
+		atRow: 10
+		andCol: 11;
+		
+		putCell: CABlocks water
+		atRow: 10
+		andCol: 20;
+		
+		putCell: CABlocks algae
+		atRow: 10
+		andCol: 21;
+		
+		putCell: CABlocks water
+		atRow: 10
+		andCol: 30;
+		
+		putCell: CABlocks algae
+		atRow: 10
+		andCol: 31.
+	10
+		timesRepeat: [ruler applyRules: ruleSet to: grid].
+	1
+		to: 100
+		do: [:rowIndex | 1
+				to: 100
+				do: [:colIndex | 
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks air
+						ifTrue: [airCount := airCount + 1].
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks water
+						ifTrue: [waterCount := waterCount + 1].
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks algae
+						ifTrue: [algaeCount := algaeCount + 1]]].
+	self assert: waterCount + algaeCount equals: 6.
+	self assert: airCount equals: 10000 - 6.
+	ruleSet removeAll.
+	CAGrid clear: grid
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/12/2024 21:23'
+}
+CARulesTest >> testRulesFish [
+	| fishCount waterCount airCount |
+	airCount := 0.
+	fishCount := 0.
+	waterCount := 0.
+	ruleSet add: CARuleFishSwimUp new;
+		 add: CARuleFishSwimLeft new;
+		 add: CARuleFishSwimRight new;
+		 add: CARuleFishSwimDown new.
+	grid
+		putCell: CABlocks water
+		atRow: 10
+		andCol: 10;
+		
+		putCell: CABlocks water
+		atRow: 10
+		andCol: 11;
+		
+		putCell: CABlocks water
+		atRow: 10
+		andCol: 12;
+		
+		putCell: CABlocks water
+		atRow: 11
+		andCol: 10;
+		
+		putCell: CABlocks fish
+		atRow: 11
+		andCol: 11;
+		
+		putCell: CABlocks water
+		atRow: 11
+		andCol: 12;
+		
+		putCell: CABlocks water
+		atRow: 12
+		andCol: 10;
+		
+		putCell: CABlocks water
+		atRow: 12
+		andCol: 11;
+		
+		putCell: CABlocks water
+		atRow: 12
+		andCol: 12.
+	10
+		timesRepeat: [ ruler applyRules: ruleSet to: grid].
+	1
+		to: 100
+		do: [:rowIndex | 1
+				to: 100
+				do: [:colIndex | 
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks air
+						ifTrue: [airCount := airCount + 1].
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks water
+						ifTrue: [waterCount := waterCount + 1].
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks fish
+						ifTrue: [fishCount := fishCount + 1]]].
+	self assert: waterCount equals: 8.
+	self assert: fishCount equals: 1.
+	self assert: airCount equals: 10000 - 9.
+	ruleSet removeAll.
+	CAGrid clear: grid
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/12/2024 21:23'
 }
 CARulesTest >> testRulesFluids [
-	| newGrid airCount waterCount |
+	| airCount waterCount |
 	airCount := 0.
 	waterCount := 0.
 	ruleSet add: CARuleFluidFlowLeft new;
@@ -165,7 +294,7 @@ CARulesTest >> testRulesFluids [
 		atRow: 10
 		andCol: 30.
 	10
-		timesRepeat: [newGrid := ruler applyRules: ruleSet to: grid].
+		timesRepeat: [ruler applyRules: ruleSet to: grid].
 	1
 		to: 100
 		do: [:rowIndex | 1
@@ -178,6 +307,112 @@ CARulesTest >> testRulesFluids [
 							= CABlocks water
 						ifTrue: [waterCount := waterCount + 1]]].
 	self assert: waterCount equals: 3.
-	self assert: airCount equals: (10000 - 3). ruleSet removeAll.
+	self assert: airCount equals: 10000 - 3.
+	ruleSet removeAll.
+	CAGrid clear: grid
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/12/2024 21:40'
+}
+CARulesTest >> testRulesLife [
+	| airCount stoneCount |
+	airCount := 0.
+	stoneCount := 0.
+	ruleSet add: CARuleStonerLife new.
+	grid
+		putCell: CABlocks stone
+		atRow: 10
+		andCol: 10;
+		
+		putCell: CABlocks stone
+		atRow: 10
+		andCol: 11;
+		
+		putCell: CABlocks stone
+		atRow: 10
+		andCol: 12;
+		
+		putCell: CABlocks stone
+		atRow: 9
+		andCol: 12;
+		
+		putCell: CABlocks stone
+		atRow: 8
+		andCol: 11.
+	40
+		timesRepeat: [ruler applyRules: ruleSet to: grid].
+	1
+		to: 100
+		do: [:rowIndex | 1
+				to: 100
+				do: [:colIndex | 
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks air
+						ifTrue: [airCount := airCount + 1].
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks stone
+						ifTrue: [stoneCount := stoneCount + 1]]].
+	self
+		assert: (grid getCellAtRow: 20 andCol: 20)
+		equals: CABlocks stone.
+	self
+		assert: (grid getCellAtRow: 20 andCol: 21)
+		equals: CABlocks stone.
+	self
+		assert: (grid getCellAtRow: 20 andCol: 22)
+		equals: CABlocks stone.
+	self
+		assert: (grid getCellAtRow: 19 andCol: 22)
+		equals: CABlocks stone.
+	self
+		assert: (grid getCellAtRow: 18 andCol: 21)
+		equals: CABlocks stone.
+	self assert: stoneCount equals: 5.
+	self assert: airCount equals: 10000 - 5.
+	ruleSet removeAll.
+	CAGrid clear: grid
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Sars 7/12/2024 21:25'
+}
+CARulesTest >> testRulesSand [
+	| airCount sandCount |
+	airCount := 0.
+	sandCount := 0.
+	ruleSet add: CARulePyramidLeft new;
+		 add: CARulePyramidRight new;
+		 add: CARuleFallDown new.
+	grid
+		putCell: CABlocks sand
+		atRow: 98
+		andCol: 10;
+		
+		putCell: CABlocks sand
+		atRow: 99
+		andCol: 10;
+		
+		putCell: CABlocks sand
+		atRow: 100
+		andCol: 10.
+	10
+		timesRepeat: [ruler applyRules: ruleSet to: grid].
+	1
+		to: 100
+		do: [:rowIndex | 1
+				to: 100
+				do: [:colIndex | 
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks air
+						ifTrue: [airCount := airCount + 1].
+					(grid getCellAtRow: rowIndex andCol: colIndex)
+							= CABlocks sand
+						ifTrue: [sandCount := sandCount + 1]]].
+	self assert: sandCount equals: 3.
+	self assert: airCount equals: 10000 - 3.
+	ruleSet removeAll.
 	CAGrid clear: grid
 ]
