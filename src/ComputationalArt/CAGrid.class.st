@@ -10,16 +10,16 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:48'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:18'
 }
-CAGrid class >> clear: aGrid [ 
+CAGrid class >> clear: aGrid [
+
 	| numCols numRows col |
 	numCols := aGrid numCols.
 	numRows := aGrid numRows.
 	col := #(0 0).
-	1
-		to: numRows
+	1 to: numRows
 		do: [:rowIndex | 1
 				to: numCols
 				do: [:colIndex | aGrid
@@ -29,7 +29,7 @@ CAGrid class >> clear: aGrid [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #functional,
 	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
 }
 CAGrid class >> fill: aGrid [ 
@@ -53,7 +53,7 @@ CAGrid class >> fill: aGrid [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #functional,
 	#'squeak_changestamp' : 'HaMa 6/20/2024 11:14'
 }
 CAGrid class >> fillStone: aGrid [ 
@@ -71,7 +71,7 @@ CAGrid class >> fillStone: aGrid [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #functional,
 	#'squeak_changestamp' : 'HaMa 6/20/2024 11:14'
 }
 CAGrid class >> fillTNT: aGrid [ 

@@ -20,107 +20,32 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 17:34'
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:19'
 }
-CAGame >> activeCellType [
-	^activeCellType
+CAGame class >> brushSize [
+
+	^ 1.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 16:02'
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:20'
 }
-CAGame >> brushActive [
-	^ brushActive
+CAGame class >> frameDelay [
+
+	^ 0.01.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:52'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:23'
 }
-CAGame >> brushSize: aSize [
-	brushSize := aSize
-]
+CAGame class >> initializeRuleSet [
 
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/23/2024 16:51'
-}
-CAGame >> clear [
-	CAGrid clear: grid.
-	screen step.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:51'
-}
-CAGame >> frameDelay: aSecondCount [
-	
-	frameDelay := aSecondCount
-	
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:20'
-}
-CAGame >> putCellAtRow: row andCol: col [ 
-	| originRow originCol placeRow placeCol |
-	originRow := row - brushSize.
-	originCol := col - brushSize.
-	1
-		to: brushSize * 2 - 1
-		do: [:rowIndex | 1
-				to: brushSize * 2 - 1
-				do: [:colIndex | 
-					placeRow := originRow + rowIndex.
-					placeCol := originCol + colIndex.
-					(placeRow > 0
-							and: placeRow < 101
-							and: placeCol > 0
-							and: placeCol < 101)
-						ifTrue: [grid
-								putCell: activeCellType
-								atRow: placeRow
-								andCol: placeCol]]].
-	screen step
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 14:19'
-}
-CAGame >> setActiveCellTypeTo: cellType [
-
-	activeCellType := cellType
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/10/2024 14:42'
-}
-CAGame >> skipAhead: stepCount [ 
-
-	stepCount timesRepeat: [ruler applyRules: ruleSet to: grid.].
-	screen step
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
-}
-CAGame >> start [
-	| maxIterations iterationCount gameloop ui |
-	isRunning := true.
-	frameDelay := 0.01.
-	brushSize := 1.
-	brushActive := false.
-	ruler := CARuler new.
-	activeCellType := CABlocks tnt.
-	ruleSet := OrderedCollection new add: CARuleFallDown new;
-				add: CARuleSink new;
+	^ OrderedCollection new
+				 add: CARuleFallDown new;
+				 add: CARuleSink new;
 				 add: CARuleFluidFlowLeft new;
 				 add: CARuleFluidFlowRight new;
 				 add: CARulePyramidLeft new;
@@ -140,10 +65,123 @@ CAGame >> start [
 				 add: CARuleFishDie new;
 				 add: CARuleTntSpread new;
 				 add: CARuleStonerLife new;
-				 
 				 yourself.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:07'
+}
+CAGame >> activeCellType [
+
+	^ activeCellType.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:07'
+}
+CAGame >> brushActive [
+
+	^ brushActive.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:08'
+}
+CAGame >> brushSize: aSize [
+
+	brushSize := aSize.
+]
+
+{
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:08'
+}
+CAGame >> clear [
+
+	CAGrid clear: grid.
+	screen step.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:08'
+}
+CAGame >> frameDelay: aSecondCount [
+	
+	frameDelay := aSecondCount.
+	
+]
+
+{
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:27'
+}
+CAGame >> initialize [
+]
+
+{
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:13'
+}
+CAGame >> putCellAtRow: aRow andCol: aCol [
+
+	| originRow originCol placeRow placeCol |
+	originRow := aRow - brushSize.
+	originCol := aCol - brushSize.
+	1 to: brushSize * 2 - 1
+		do: [ :rowIndex | 1
+				to: brushSize * 2 - 1
+				do: [ :colIndex | 
+					placeRow := originRow + rowIndex.
+					placeCol := originCol + colIndex.
+					(placeRow > 0
+							and: placeRow < 101
+							and: placeCol > 0
+							and: placeCol < 101)
+						ifTrue: [ grid
+								putCell: activeCellType
+								atRow: placeRow
+								andCol: placeCol. ]]].
+	screen step.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:13'
+}
+CAGame >> setActiveCellTypeTo: aType [
+
+	activeCellType := aType.
+]
+
+{
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:14'
+}
+CAGame >> skipAhead: aStepCount [ 
+
+	aStepCount timesRepeat: [ ruler applyRules: ruleSet to: grid. ].
+	screen step.
+]
+
+{
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:27'
+}
+CAGame >> start [
+
+	| maxIterations iterationCount gameloop ui |
+	isRunning := true.
+	frameDelay := CAGame frameDelay.
+	brushSize := CAGame brushSize.
+	brushActive := false.
+	ruler := CARuler new.
+	activeCellType := CABlocks tnt.
+	ruleSet := CAGame initializeRuleSet.
 	grid := CAGrid new.
-	CAGrid fill: grid.
 	screen := CADisplay new.
 	screen attachedGame: self.
 	screen attachedGrid: grid.
@@ -167,18 +205,19 @@ CAGame >> start [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 15:52'
+	#category : #toggle,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:10'
 }
 CAGame >> toggleBrushActive [
+
 	brushActive := brushActive not.
-	Transcript show:'tog'; cr.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 15:01'
+	#category : #toggle,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:11'
 }
 CAGame >> toggleRunning [
+
 	isRunning := isRunning not.
 ]
