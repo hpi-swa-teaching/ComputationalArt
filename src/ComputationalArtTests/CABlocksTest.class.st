@@ -8,34 +8,38 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:28'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:00'
 }
 CABlocksTest >> expectedFailures [
-	^ {#testWrongIndexFail}
+
+	^ {#testWrongIndexFail}.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:07'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:57'
 }
 CABlocksTest >> setUp [
+
 	blocks := CABlocks new.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:07'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:57'
 }
 CABlocksTest >> tearDown [
+
 	blocks := nil.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:58'
 }
 CABlocksTest >> testColors [
+
 	self assert: Color white equals: (blocks colorAt: CABlocks air).
 	self assert: Color blue equals: (blocks colorAt: CABlocks water).
 	self assert: Color yellow equals: (blocks colorAt: CABlocks sand).
@@ -49,10 +53,11 @@ CABlocksTest >> testColors [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:11'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:58'
 }
 CABlocksTest >> testIndexMethods [
+
 	self assert: 0 equals: CABlocks air.
 	self assert: 1 equals: CABlocks water.
 	self assert: 2 equals: CABlocks sand.
@@ -66,10 +71,11 @@ CABlocksTest >> testIndexMethods [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:58'
 }
 CABlocksTest >> testNames [
+
 	self assert: 'air' equals: (blocks nameAt: CABlocks air).
 	self assert: 'water' equals: (blocks nameAt: CABlocks water).
 	self assert: 'sand' equals: (blocks nameAt: CABlocks sand).
@@ -83,9 +89,10 @@ CABlocksTest >> testNames [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:58'
 }
 CABlocksTest >> testWrongIndexFail [
+
 	self assert: 'wall' equals: (blocks nameAt: -1).
 ]

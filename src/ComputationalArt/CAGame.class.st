@@ -116,15 +116,8 @@ CAGame >> frameDelay: aSecondCount [
 ]
 
 {
-	#category : #'initialize-release',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:27'
-}
-CAGame >> initialize [
-]
-
-{
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:13'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:33'
 }
 CAGame >> putCellAtRow: aRow andCol: aCol [
 
@@ -132,19 +125,19 @@ CAGame >> putCellAtRow: aRow andCol: aCol [
 	originRow := aRow - brushSize.
 	originCol := aCol - brushSize.
 	1 to: brushSize * 2 - 1
-		do: [ :rowIndex | 1
-				to: brushSize * 2 - 1
-				do: [ :colIndex | 
+		do: [:rowIndex | 
+			1 to: brushSize * 2 - 1
+				do: [:colIndex | 
 					placeRow := originRow + rowIndex.
 					placeCol := originCol + colIndex.
 					(placeRow > 0
-							and: placeRow < 101
-							and: placeCol > 0
-							and: placeCol < 101)
-						ifTrue: [ grid
+						and: placeRow < 101
+						and: placeCol > 0
+						and: placeCol < 101)
+						ifTrue: [grid
 								putCell: activeCellType
 								atRow: placeRow
-								andCol: placeCol. ]]].
+								andCol: placeCol.]]].
 	screen step.
 ]
 
@@ -159,17 +152,17 @@ CAGame >> setActiveCellTypeTo: aType [
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:14'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:33'
 }
 CAGame >> skipAhead: aStepCount [ 
 
-	aStepCount timesRepeat: [ ruler applyRules: ruleSet to: grid. ].
+	aStepCount timesRepeat: [ruler applyRules: ruleSet to: grid.].
 	screen step.
 ]
 
 {
 	#category : #'initialize-release',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:27'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:36'
 }
 CAGame >> start [
 
@@ -195,13 +188,12 @@ CAGame >> start [
 	maxIterations := 100.
 	iterationCount := 0.
 	gameloop := [[iterationCount < maxIterations]
-				whileTrue: [(Delay forSeconds: frameDelay) wait.
-					isRunning
-						ifTrue: [ruler applyRules: ruleSet to: grid.
+				whileTrue: [
+					(Delay forSeconds: frameDelay) wait.
+					isRunning ifTrue: [
+							ruler applyRules: ruleSet to: grid.
 							screen step.
-							iterationCount := iterationCount + 1]].
-			Transcript show: 'Game loop terminated after ' , maxIterations printString , ' iterations.';
-				 cr] fork
+							iterationCount := iterationCount + 1.]]] fork.
 ]
 
 {

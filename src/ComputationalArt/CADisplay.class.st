@@ -114,7 +114,7 @@ CADisplay >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:58'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:30'
 }
 CADisplay >> showGrid: aGrid [
 
@@ -130,8 +130,8 @@ CADisplay >> showGrid: aGrid [
 
 	self wipeCells.
 
-	1 to: rows do: [ :rowIndex |
-    		1 to:  cols do: [ :colIndex |
+	1 to: rows do: [:rowIndex |
+    		1 to:  cols do: [:colIndex |
         		cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
         		cellMorph := Morph new
             	extent: size @ size;
@@ -140,12 +140,12 @@ CADisplay >> showGrid: aGrid [
             	borderWidth: border;
             	position: (((colIndex-1) * (size+gap)) @ ((rowIndex-1) * (size+gap)) + origin).
         		viewMorph addMorph: cellMorph.
-        		cells add: cellMorph. ]].
+        		cells add: cellMorph.]].
 ]
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:58'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:31'
 }
 CADisplay >> step [
 	
@@ -163,29 +163,29 @@ CADisplay >> step [
 	cells isEmpty
 		ifTrue: [
 			(1 to: rows)
-				do: [ :rowIndex | (1 to: cols)
-						do: [ :colIndex |
+				do: [:rowIndex | 
+					(1 to: cols)
+						do: [:colIndex |
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := CACellMorph new extent: size @ size;
 										 borderColor: Color gray;
-										
-										color: (blockLookup colorAt: cell);
+										 color: (blockLookup colorAt: cell);
 										 borderWidth: border;
 										 position: colIndex - 1 * (size + gap) @ (rowIndex - 1 * (size + gap)) + origin;
-										row: rowIndex;
-										col: colIndex;
-										game: attachedGame.
+										 row: rowIndex;
+										 col: colIndex;
+										 game: attachedGame.
 							viewMorph addMorph: cellMorph.
-							cells add: cellMorph. ]]].
+							cells add: cellMorph.]]].
 	cells isEmpty
-		ifFalse: [
-			(1 to: rows)
-				do: [ :rowIndex | (1 to: cols)
-						do: [ :colIndex | 
+		ifFalse: [(1 to: rows)
+				do: [:rowIndex | 
+					(1 to: cols)
+						do: [:colIndex | 
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
 							cellMorph
-								color: (blockLookup colorAt: cell). ]]].
+								color: (blockLookup colorAt: cell).]]].
 ]
 
 {
@@ -199,12 +199,12 @@ CADisplay >> viewMorph [
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:11'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:32'
 }
 CADisplay >> wipeCells [
 
-	cells do: [ :eachMorph |
-		eachMorph delete. ].
+	cells do: [:eachMorph |
+				eachMorph delete.].
 	cells removeAll.
 
 ]

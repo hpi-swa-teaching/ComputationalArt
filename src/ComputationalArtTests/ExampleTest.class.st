@@ -5,9 +5,10 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Pepe Simon 6/19/2024 17:11'
+	#category : #testing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:02'
 }
 ExampleTest >> testWorking [
+
 	self assert: 1 equals: 1.
 ]

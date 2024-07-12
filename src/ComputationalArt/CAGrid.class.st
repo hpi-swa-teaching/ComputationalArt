@@ -11,7 +11,7 @@ Class {
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 19:18'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:33'
 }
 CAGrid class >> clear: aGrid [
 
@@ -20,72 +20,48 @@ CAGrid class >> clear: aGrid [
 	numRows := aGrid numRows.
 	col := #(0 0).
 	1 to: numRows
-		do: [:rowIndex | 1
+		do: [ :rowIndex | 1
 				to: numCols
-				do: [:colIndex | aGrid
+				do: [ :colIndex | aGrid
 						putCell: col atRandom
 						atRow: rowIndex
-						andCol: colIndex]]
+						andCol: colIndex. ]].
 ]
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:33'
 }
-CAGrid class >> fill: aGrid [ 
-	| rand numCols numRows |
-	numCols := aGrid numCols.
-	numRows := aGrid numRows.
-	rand := #(1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 7 7 6 6 6 5 5 5 5 5 9 8 8).
-	1
-		to: numRows
-		do: [:rowIndex | 1
-				to: numCols
-				do: [:colIndex | rowIndex < 45
-						ifTrue: [aGrid
-								putCell: rand atRandom
-								atRow: rowIndex
-								andCol: colIndex]
-						ifFalse: [aGrid
-								putCell: 0
-								atRow: rowIndex
-								andCol: colIndex]]]
-]
+CAGrid class >> fillStone: aGrid [
 
-{
-	#category : #functional,
-	#'squeak_changestamp' : 'HaMa 6/20/2024 11:14'
-}
-CAGrid class >> fillStone: aGrid [ 
 	| numCols numRows |
 	numCols := aGrid numCols.
 	numRows := aGrid numRows.
-	1
-		to: numRows
-		do: [:rowIndex | 1
+	1 to: numRows
+		do: [ :rowIndex | 1
 				to: numCols
-				do: [:colIndex | aGrid
+				do: [ :colIndex | aGrid
 						putCell: CABlocks stone
 						atRow: rowIndex
-						andCol: colIndex]]
+						andCol: colIndex. ]].
 ]
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'HaMa 6/20/2024 11:14'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:33'
 }
-CAGrid class >> fillTNT: aGrid [ 
+CAGrid class >> fillTNT: aGrid [
+
 	| numCols numRows |
 	numCols := aGrid numCols.
 	numRows := aGrid numRows.
-	1
-		to: numRows
-		do: [:rowIndex | 1
+	1 to: numRows
+		do: [ :rowIndex | 1
 				to: numCols
-				do: [:colIndex | aGrid
+				do: [ :colIndex | aGrid
 						putCell: CABlocks tnt
 						atRow: rowIndex
-						andCol: colIndex]]
+						andCol: colIndex. ]].
 ]
 
 {

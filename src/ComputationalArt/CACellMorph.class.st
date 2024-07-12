@@ -47,23 +47,23 @@ CACellMorph >> handlesMouseOver: anEvent [
 
 {
 	#category : #handling,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:29'
 }
 CACellMorph >> mouseDown: anEvent [
 
 	anEvent redButtonPressed
-		ifTrue: [game putCellAtRow: row andCol: col]
-		ifFalse: [game toggleBrushActive].
+		ifTrue: [game putCellAtRow: row andCol: col.]
+		ifFalse: [game toggleBrushActive.].
 ]
 
 {
 	#category : #handling,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:39'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 20:29'
 }
 CACellMorph >> mouseEnter: anEvent [
 
 	game brushActive
-		ifTrue: [game putCellAtRow: row andCol: col].
+		ifTrue: [game putCellAtRow: row andCol: col.].
 		
 ]
 
