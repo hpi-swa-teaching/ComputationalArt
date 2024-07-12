@@ -21,6 +21,36 @@ CADisplay class >> border [
 
 {
 	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:04'
+}
+CADisplay class >> borderWidth [
+	"I return the borderWidth of a viewMorph"
+	
+	^ 5.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:01'
+}
+CADisplay class >> bounds [
+	"I return the bounds of a viewMorph"
+
+	^ 100 @ 100 corner: 1450 @ 1160.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:02'
+}
+CADisplay class >> color [
+	"I return the color of a viewMorph"
+	
+	^ Color r:  176/255 g: 196/255 b: 222/255.
+]
+
+{
+	#category : #constants,
 	#'squeak_changestamp' : 'KoPa 7/12/2024 18:26'
 }
 CADisplay class >> gap [
@@ -68,27 +98,27 @@ CADisplay >> attachedGrid: aGrid [
 
 {
 	#category : #'initialize-release',
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:22'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 19:03'
 }
 CADisplay >> initialize [
 
 	cells := OrderedCollection new.
 	viewMorph := Morph new
-				bounds: (100 @ 100 corner: 1450 @ 1160); 
-				color: (Color r:  176/255 g: 196/255 b: 222/255); 
+				bounds: CADisplay bounds; 
+				color: CADisplay color; 
 				borderColor: Color gray;
-				borderWidth: 5;
+				borderWidth: CADisplay borderWidth;
 				openInWorldOrWorldlet; 
 				yourself.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:31'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:58'
 }
 CADisplay >> showGrid: aGrid [
 
-	| grid cols rows origin size border gap blockLookup |
+	| grid cols rows origin size border gap blockLookup cellMorph cell |
 	blockLookup := CABlocks new.
 	grid := aGrid grid.	
 	cols := aGrid numCols.
@@ -102,7 +132,6 @@ CADisplay >> showGrid: aGrid [
 
 	1 to: rows do: [ :rowIndex |
     		1 to:  cols do: [ :colIndex |
-        		| cellMorph cell |
         		cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
         		cellMorph := Morph new
             	extent: size @ size;
@@ -116,28 +145,26 @@ CADisplay >> showGrid: aGrid [
 
 {
 	#category : #functional,
-	#'squeak_changestamp' : 'KoPa 7/12/2024 18:33'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:58'
 }
 CADisplay >> step [
-
-	| grid cols rows origin size border gap blockLookup aGrid |
+	
+	| grid cols rows origin size border gap blockLookup aGrid cell cellMorph |
 	aGrid := attachedGrid.
 	blockLookup := CABlocks new.
 	grid := aGrid grid.
 	cols := aGrid numCols.
 	rows := aGrid numRows.
-	origin := viewMorph position + (320@30).
+	origin := viewMorph position + CADisplay offset.
 	size := CADisplay size.
 	border := CADisplay border.
 	gap := CADisplay gap.
 	
 	cells isEmpty
-		ifTrue: [Transcript show: 'grid was empty';
-				 cr.
+		ifTrue: [
 			(1 to: rows)
-				do: [:rowIndex | (1 to: cols)
-						do: [:colIndex | 
-							| cellMorph cell |
+				do: [ :rowIndex | (1 to: cols)
+						do: [ :colIndex |
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := CACellMorph new extent: size @ size;
 										 borderColor: Color gray;
@@ -149,18 +176,16 @@ CADisplay >> step [
 										col: colIndex;
 										game: attachedGame.
 							viewMorph addMorph: cellMorph.
-							cells add: cellMorph]]].
+							cells add: cellMorph. ]]].
 	cells isEmpty
-		ifFalse: [Transcript show: 'grid was not empty';
-				 cr.
+		ifFalse: [
 			(1 to: rows)
-				do: [:rowIndex | (1 to: cols)
-						do: [:colIndex | 
-							| cellMorph cell |
+				do: [ :rowIndex | (1 to: cols)
+						do: [ :colIndex | 
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
 							cellMorph
-								color: (blockLookup colorAt: cell)]]]
+								color: (blockLookup colorAt: cell). ]]].
 ]
 
 {
