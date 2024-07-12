@@ -33,19 +33,19 @@ CABlocksTest >> tearDown [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:18'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
 }
 CABlocksTest >> testColors [
-	self assert: Color white equals: (blocks colorOf: CABlocks air).
-	self assert: Color blue equals: (blocks colorOf: CABlocks water).
-	self assert: Color yellow equals: (blocks colorOf: CABlocks sand).
-	self assert: Color black equals: (blocks colorOf: CABlocks stone).
-	self assert: Color green equals: (blocks colorOf: CABlocks algae).
-	self assert: Color brown equals: (blocks colorOf: CABlocks wood).
-	self assert: Color red equals: (blocks colorOf: CABlocks fire).
-	self assert: Color lightGray equals: (blocks colorOf: CABlocks smoke).
-	self assert: Color orange equals: (blocks colorOf: CABlocks tnt).
-	self assert: Color lightRed equals: (blocks colorOf: CABlocks fish).
+	self assert: Color white equals: (blocks colorAt: CABlocks air).
+	self assert: Color blue equals: (blocks colorAt: CABlocks water).
+	self assert: Color yellow equals: (blocks colorAt: CABlocks sand).
+	self assert: Color black equals: (blocks colorAt: CABlocks stone).
+	self assert: Color green equals: (blocks colorAt: CABlocks algae).
+	self assert: Color brown equals: (blocks colorAt: CABlocks wood).
+	self assert: Color red equals: (blocks colorAt: CABlocks fire).
+	self assert: Color lightGray equals: (blocks colorAt: CABlocks smoke).
+	self assert: Color orange equals: (blocks colorAt: CABlocks tnt).
+	self assert: Color lightRed equals: (blocks colorAt: CABlocks fish).
 ]
 
 {
@@ -67,25 +67,25 @@ CABlocksTest >> testIndexMethods [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:21'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
 }
 CABlocksTest >> testNames [
-	self assert: 'air' equals: (blocks nameOf: CABlocks air).
-	self assert: 'water' equals: (blocks nameOf: CABlocks water).
-	self assert: 'sand' equals: (blocks nameOf: CABlocks sand).
-	self assert: 'stone' equals: (blocks nameOf: CABlocks stone).
-	self assert: 'algae' equals: (blocks nameOf: CABlocks algae).
-	self assert: 'wood' equals: (blocks nameOf: CABlocks wood).
-	self assert: 'fire' equals: (blocks nameOf: CABlocks fire).
-	self assert: 'smoke' equals: (blocks nameOf: CABlocks smoke).
-	self assert: 'tnt' equals: (blocks nameOf: CABlocks tnt).
-	self assert: 'fish' equals: (blocks nameOf: CABlocks fish).
+	self assert: 'air' equals: (blocks nameAt: CABlocks air).
+	self assert: 'water' equals: (blocks nameAt: CABlocks water).
+	self assert: 'sand' equals: (blocks nameAt: CABlocks sand).
+	self assert: 'stone' equals: (blocks nameAt: CABlocks stone).
+	self assert: 'algae' equals: (blocks nameAt: CABlocks algae).
+	self assert: 'wood' equals: (blocks nameAt: CABlocks wood).
+	self assert: 'fire' equals: (blocks nameAt: CABlocks fire).
+	self assert: 'smoke' equals: (blocks nameAt: CABlocks smoke).
+	self assert: 'tnt' equals: (blocks nameAt: CABlocks tnt).
+	self assert: 'fish' equals: (blocks nameAt: CABlocks fish).
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 6/20/2024 10:27'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
 }
 CABlocksTest >> testWrongIndexFail [
-	self assert: 'wall' equals: (blocks nameOf: -1).
+	self assert: 'wall' equals: (blocks nameAt: -1).
 ]

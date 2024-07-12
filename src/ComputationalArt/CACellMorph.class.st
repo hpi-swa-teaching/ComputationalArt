@@ -10,61 +10,68 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 14:58'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:39'
 }
-CACellMorph >> col: colPos [ 
-	col:= colPos
+CACellMorph >> col: aPosition [ 
+
+	col:= aPosition.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 14:58'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
 }
 CACellMorph >> game: aGame [ 
-	game := aGame
+
+	game := aGame.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 15:02'
+	#category : #handling,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
 }
 CACellMorph >> handlesMouseDown: anEvent [
-^ true
+
+	^ true.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 16:03'
+	#category : #handling,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
 }
-CACellMorph >> handlesMouseOver: anEvent [ 
-	^ true
+CACellMorph >> handlesMouseOver: anEvent [
+
+	^ true.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 15:58'
+	#category : #handling,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
 }
-CACellMorph >> mouseDown: anEvent [ 
+CACellMorph >> mouseDown: anEvent [
+
 	anEvent redButtonPressed
 		ifTrue: [game putCellAtRow: row andCol: col]
-		ifFalse: [game toggleBrushActive]
+		ifFalse: [game toggleBrushActive].
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 7/3/2024 16:02'
+	#category : #handling,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:39'
 }
-CACellMorph >> mouseEnter: anEvent [ 
+CACellMorph >> mouseEnter: anEvent [
+
 	game brushActive
-		ifTrue: [game putCellAtRow: row andCol: col]
+		ifTrue: [game putCellAtRow: row andCol: col].
 		
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 14:58'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:39'
 }
-CACellMorph >> row: rowPos [
-row := rowPos
+CACellMorph >> row: aPosition [
+
+	row := aPosition.
 ]

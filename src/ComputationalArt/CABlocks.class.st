@@ -10,100 +10,111 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 14:07'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> air [
-	^0
+
+	^ 0.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/7/2024 18:15'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> algae [
-	^ 4
+
+	^ 4.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 20:04'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> fire [
-	^ 6
+
+	^ 6.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 20:04'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> fish [
-	^ 9
+
+	^ 9.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:03'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> sand [
-	^ 2
+
+	^ 2.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 20:03'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> smoke [
-	^ 7
+
+	^ 7.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:04'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> stone [
-	^ 3
+
+	^ 3.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 20:09'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> tnt [
-^8
+
+	^ 8.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 12:04'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> water [
-	^ 1
+
+	^ 1.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/12/2024 20:02'
+	#category : #blocks,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:21'
 }
 CABlocks class >> wood [
-	^5
+
+	^ 5.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/3/2024 23:46'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:04'
 }
-CABlocks >> colorOf: index [
+CABlocks >> colorAt: anIndex [
 
-	^ blockColors at: index.
+	^ blockColors at: anIndex.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/19/2024 16:41'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:22'
 }
 CABlocks >> initialize [
-	blockNames := IdentityDictionary new at: 0 put: 'air';
+	blockNames := IdentityDictionary new
+				 at: 0 put: 'air';
 				 at: 1 put: 'water';
 				 at: 2 put: 'sand';
 				 at: 3 put: 'stone';
@@ -114,7 +125,8 @@ CABlocks >> initialize [
 				 at: 8 put: 'tnt';
 				 at: 9 put: 'fish';
 				 yourself.
-	blockColors := IdentityDictionary new at: 0 put: Color white;
+	blockColors := IdentityDictionary new
+				 at: 0 put: Color white;
 				 at: 1 put: Color blue;
 				 at: 2 put: Color yellow;
 				 at: 3 put: Color black;
@@ -124,13 +136,13 @@ CABlocks >> initialize [
 				 at: 7 put: Color lightGray;
 				 at: 8 put: Color orange;
 				 at: 9 put: Color lightRed;
-				 yourself
+				 yourself.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'HaMa 5/31/2024 11:21'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:04'
 }
-CABlocks >> nameOf: index [
-	^ blockNames at: index.
+CABlocks >> nameAt: anIndex [
+	^ blockNames at: anIndex.
 ]

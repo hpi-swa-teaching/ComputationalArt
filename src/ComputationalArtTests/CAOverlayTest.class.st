@@ -37,7 +37,7 @@ CAOverlayTest >> tearDown [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JAL 6/23/2024 17:49'
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:03'
 }
 CAOverlayTest >> testBlockMenu [
 	| list blocks |
@@ -45,5 +45,5 @@ CAOverlayTest >> testBlockMenu [
 	list := (overlay submorphOfClass: CAOverlayBlockMenu) submorphOfClass: CAOverlayList.
 	list submorphsDo: [:s |
 		s click. 
-		self assert: (blocks nameOf: (game activeCellType)) equals: s contents asLowercase].
+		self assert: (blocks nameAt: (game activeCellType)) equals: s contents asLowercase].
 ]

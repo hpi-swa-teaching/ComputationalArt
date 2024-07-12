@@ -11,8 +11,44 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:43'
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:27'
+}
+CADisplay class >> border [
+
+	^ 1.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:26'
+}
+CADisplay class >> gap [
+	
+	^ 0.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:27'
+}
+CADisplay class >> offset [
+
+	^ 320@30.
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:27'
+}
+CADisplay class >> size [
+
+	^ 10.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
 }
 CADisplay >> attachedGame: aGame [
 
@@ -21,8 +57,8 @@ CADisplay >> attachedGame: aGame [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:43'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:38'
 }
 CADisplay >> attachedGrid: aGrid [
 
@@ -31,10 +67,11 @@ CADisplay >> attachedGrid: aGrid [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/23/2024 15:54'
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:22'
 }
 CADisplay >> initialize [
+
 	cells := OrderedCollection new.
 	viewMorph := Morph new
 				bounds: (100 @ 100 corner: 1450 @ 1160); 
@@ -46,45 +83,43 @@ CADisplay >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:45'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:31'
 }
 CADisplay >> showGrid: aGrid [
 
-|grid cols rows origin size border gap blockLookup|
+	| grid cols rows origin size border gap blockLookup |
+	blockLookup := CABlocks new.
+	grid := aGrid grid.	
+	cols := aGrid numCols.
+	rows := aGrid numRows.
+	origin := viewMorph position.
+	size := CADisplay size.
+	border := CADisplay border.
+	gap := CADisplay gap.
 
-blockLookup := CABlocks new.
-grid := aGrid grid.	
-cols := aGrid numCols.
-rows := aGrid numRows.
-origin := viewMorph position.
-size := 10.
-border := 1.
-gap := 0.
+	self wipeCells.
 
-self wipeCells.
-
-(1 to: rows) do: [:rowIndex |
-    (1 to:  cols) do: [:colIndex |
-        | cellMorph cell|
-        cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
-        cellMorph := Morph new
-            extent: size @ size;
-            borderColor: Color black;
-            color: "Color random;" (blockLookup colorOf: cell);
-            borderWidth: border;
-            position: (((colIndex-1) * (size+gap)) @ ((rowIndex-1) * (size+gap)) + origin).
-        viewMorph addMorph: cellMorph.
-        cells add: cellMorph.
-    ].
-].
+	1 to: rows do: [ :rowIndex |
+    		1 to:  cols do: [ :colIndex |
+        		| cellMorph cell |
+        		cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
+        		cellMorph := Morph new
+            	extent: size @ size;
+            	borderColor: Color black;
+            	color: (blockLookup colorAt: cell);
+            	borderWidth: border;
+            	position: (((colIndex-1) * (size+gap)) @ ((rowIndex-1) * (size+gap)) + origin).
+        		viewMorph addMorph: cellMorph.
+        		cells add: cellMorph. ]].
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/23/2024 15:39'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:33'
 }
 CADisplay >> step [
+
 	| grid cols rows origin size border gap blockLookup aGrid |
 	aGrid := attachedGrid.
 	blockLookup := CABlocks new.
@@ -92,9 +127,10 @@ CADisplay >> step [
 	cols := aGrid numCols.
 	rows := aGrid numRows.
 	origin := viewMorph position + (320@30).
-	size := 10.
-	border := 1.
-	gap := 0.
+	size := CADisplay size.
+	border := CADisplay border.
+	gap := CADisplay gap.
+	
 	cells isEmpty
 		ifTrue: [Transcript show: 'grid was empty';
 				 cr.
@@ -106,7 +142,7 @@ CADisplay >> step [
 							cellMorph := CACellMorph new extent: size @ size;
 										 borderColor: Color gray;
 										
-										color: (blockLookup colorOf: cell);
+										color: (blockLookup colorAt: cell);
 										 borderWidth: border;
 										 position: colIndex - 1 * (size + gap) @ (rowIndex - 1 * (size + gap)) + origin;
 										row: rowIndex;
@@ -124,27 +160,26 @@ CADisplay >> step [
 							cell := aGrid getCellAtRow: rowIndex andCol: colIndex.
 							cellMorph := cells at: rowIndex - 1 * rows + colIndex.
 							cellMorph
-								color: (blockLookup colorOf: cell)]]]
+								color: (blockLookup colorAt: cell)]]]
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/16/2024 20:43'
+	#category : #accessing,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:07'
 }
 CADisplay >> viewMorph [
 	
-	^viewMorph
+	^ viewMorph.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Sars 6/3/2024 23:45'
+	#category : #functional,
+	#'squeak_changestamp' : 'KoPa 7/12/2024 18:11'
 }
 CADisplay >> wipeCells [
 
-cells do: [:eachMorph |
-    eachMorph delete.
-].
-cells removeAll.
+	cells do: [ :eachMorph |
+		eachMorph delete. ].
+	cells removeAll.
 
 ]
